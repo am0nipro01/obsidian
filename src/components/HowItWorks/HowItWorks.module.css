@@ -1,0 +1,98 @@
+.section {
+  padding: var(--section-padding);
+  background-color: var(--color-black-soft);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  margin-bottom: 4rem;
+}
+
+/* Steps grid */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.step {
+  padding: 0 3rem 0 0;
+  position: relative;
+}
+
+.step:last-child {
+  padding-right: 0;
+}
+
+/* Number */
+.number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--color-border);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  transition: color var(--transition-slow);
+}
+
+.step:hover .number {
+  color: var(--color-gold);
+}
+
+/* Horizontal connector line between steps */
+.connector {
+  display: none;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  width: 3rem;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-border), transparent);
+}
+
+/* Text */
+.stepTitle {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+.stepDesc {
+  font-size: 0.9rem;
+  color: var(--color-white-muted);
+  line-height: 1.8;
+  max-width: 280px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .step:not(:last-child)::after {
+    display: none;
+  }
+
+  .step {
+    padding: 0;
+    border-left: 1px solid var(--color-border);
+    padding-left: 1.5rem;
+  }
+}
