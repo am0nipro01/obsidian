@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { fleet } from '../data/fleet'
 import styles from './Reservation.module.css'
+import Footer from '../components/Footer/Footer'
 
 export default function Reservation() {
   const { t } = useTranslation()
@@ -150,6 +151,7 @@ export default function Reservation() {
           </button>
         </form>
       </div>
+      <Footer />
     </div>
   )
 }
