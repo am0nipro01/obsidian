@@ -1,0 +1,96 @@
+.card {
+  background-color: var(--color-black-card);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(200, 169, 110, 0.4);
+}
+
+/* Image */
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.category {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  background-color: var(--color-gold);
+  padding: 0.25rem 0.7rem;
+}
+
+/* Body */
+.body {
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-white);
+  margin-bottom: 1.2rem;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.amount {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-gold);
+  font-weight: 300;
+}
+
+.unit {
+  font-size: 0.75rem;
+  color: var(--color-white-muted);
+  letter-spacing: 0.05em;
+}
+
+.cta {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-white-muted);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 2px;
+  transition: color var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+
+.cta:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+}
