@@ -45,6 +45,7 @@ export default function Reservation() {
   }
 
   return (
+    <>
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.header}>
@@ -152,7 +153,8 @@ export default function Reservation() {
           </button>
         </form>
       </div>
-      <Footer />
     </div>
+    <Footer />
+    </>
   )
 }
