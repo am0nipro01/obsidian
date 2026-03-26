@@ -20,7 +20,7 @@ export default function VehicleCard({ vehicle }) {
             <span className={styles.amount}>{vehicle.price}€</span>
             <span className={styles.unit}>{t('fleet.perDay')}</span>
           </p>
-          <Link to="/reservation" className={styles.cta}>
+          <Link to={`/reservation?vehicle=${encodeURIComponent(vehicle.name)}`} className={styles.cta}>
             {t('fleet.cta')}
           </Link>
         </div>

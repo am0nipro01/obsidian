@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { fleet } from '../data/fleet'
-import styles from './Reservation.module.css'
 import Footer from '../components/Footer/Footer'
+import styles from './Reservation.module.css'
 
 export default function Reservation() {
   const { t } = useTranslation()
+  const [searchParams] = useSearchParams()
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
-    vehicle: '',
+    vehicle: searchParams.get('vehicle') || '',
     pickup: '',
     return: '',
     location: '',

@@ -102,3 +102,7 @@ button {
   background: var(--color-gold);
   margin-bottom: 1.5rem;
 }
+/* Offset pour les ancres avec navbar fixe */
+[id] {
+  scroll-margin-top: 80px;
+}
