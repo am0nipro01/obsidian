@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "fleet": "Fleet",
+    "howItWorks": "How It Works",
+    "reservation": "Reservation"
+  },
+  "hero": {
+    "tagline": "PREMIUM RENTAL",
+    "title": "Drive\ndifferently.",
+    "subtitle": "Exceptional vehicles. Flawless experience. At your service.",
+    "cta": "Reserve now",
+    "ctaSecondary": "View fleet"
+  },
+  "fleet": {
+    "title": "Our Fleet",
+    "subtitle": "Select the vehicle that matches your ambitions",
+    "perDay": "/ day",
+    "cta": "Reserve this vehicle"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Simple. Fast. Premium.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Choose",
+        "description": "Browse our fleet and select the vehicle that suits your needs."
+      },
+      {
+        "number": "02",
+        "title": "Reserve",
+        "description": "Fill in your details and confirm your reservation in minutes."
+      },
+      {
+        "number": "03",
+        "title": "Drive",
+        "description": "Pick up your vehicle and enjoy a premium driving experience."
+      }
+    ]
+  },
+  "reservation": {
+    "title": "Reserve your vehicle",
+    "subtitle": "We confirm availability within 2 hours.",
+    "fields": {
+      "vehicle": "Desired vehicle",
+      "vehiclePlaceholder": "Select a vehicle",
+      "pickup": "Pickup date",
+      "return": "Return date",
+      "location": "Pickup location",
+      "locationPlaceholder": "City or address",
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com"
+    },
+    "submit": "Confirm reservation",
+    "success": "Your request has been sent. We will get back to you within 2 hours.",
+    "required": "Required fields"
+  },
+  "footer": {
+    "tagline": "Premium car rental redefined.",
+    "nav": "Navigation",
+    "contact": "Contact",
+    "phone": "+33 1 23 45 67 89",
+    "email": "contact@obsidian-rental.com",
+    "address": "12 Avenue Montaigne, Paris",
+    "copyright": "© 2025 OBSIDIAN. All rights reserved.",
+    "legal": "Legal notice"
+  }
+}

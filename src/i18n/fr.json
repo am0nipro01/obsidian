@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "fleet": "Flotte",
+    "howItWorks": "Comment ça marche",
+    "reservation": "Réservation"
+  },
+  "hero": {
+    "tagline": "LOCATION PREMIUM",
+    "title": "Conduisez\nautrement.",
+    "subtitle": "Des véhicules d'exception. Une expérience irréprochable. À votre service.",
+    "cta": "Réserver maintenant",
+    "ctaSecondary": "Voir la flotte"
+  },
+  "fleet": {
+    "title": "Notre Flotte",
+    "subtitle": "Choisissez le véhicule à la hauteur de vos ambitions",
+    "perDay": "/ jour",
+    "cta": "Réserver ce véhicule"
+  },
+  "howItWorks": {
+    "title": "Comment ça fonctionne",
+    "subtitle": "Simple. Rapide. Premium.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Choisissez",
+        "description": "Parcourez notre flotte et sélectionnez le véhicule qui correspond à vos besoins."
+      },
+      {
+        "number": "02",
+        "title": "Réservez",
+        "description": "Renseignez vos informations et confirmez votre réservation en quelques minutes."
+      },
+      {
+        "number": "03",
+        "title": "Prenez le volant",
+        "description": "Récupérez votre véhicule et vivez une expérience de conduite d'exception."
+      }
+    ]
+  },
+  "reservation": {
+    "title": "Réservez votre véhicule",
+    "subtitle": "Nous vous confirmons la disponibilité sous 2h.",
+    "fields": {
+      "vehicle": "Véhicule souhaité",
+      "vehiclePlaceholder": "Sélectionnez un véhicule",
+      "pickup": "Date de prise en charge",
+      "return": "Date de retour",
+      "location": "Lieu de prise en charge",
+      "locationPlaceholder": "Ville ou adresse",
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "votre@email.com"
+    },
+    "submit": "Confirmer la réservation",
+    "success": "Votre demande a bien été envoyée. Nous vous recontactons sous 2h.",
+    "required": "Champs obligatoires"
+  },
+  "footer": {
+    "tagline": "La location premium réinventée.",
+    "nav": "Navigation",
+    "contact": "Contact",
+    "phone": "+33 1 23 45 67 89",
+    "email": "contact@obsidian-rental.com",
+    "address": "12 Avenue Montaigne, Paris",
+    "copyright": "© 2025 OBSIDIAN. Tous droits réservés.",
+    "legal": "Mentions légales"
+  }
+}
