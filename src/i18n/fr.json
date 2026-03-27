@@ -102,6 +102,33 @@
     "paid": "Confirmée",
     "cancelled": "Annulée"
   }
+},
+"admin": {
+  "title": "Dashboard Admin",
+  "tabs": { "vehicles": "Véhicules", "reservations": "Réservations" },
+  "stats": {
+    "totalVehicles": "Véhicules",
+    "totalReservations": "Réservations",
+    "pending": "En attente",
+    "paid": "Confirmées"
+  },
+  "vehicles": {
+    "add": "Ajouter un véhicule",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer ce véhicule ?",
+    "available": "Disponible",
+    "unavailable": "Indisponible",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "name": "Nom", "category": "Catégorie",
+    "price": "Prix / jour (€)", "imageUrl": "URL de l'image"
+  },
+  "reservations": {
+    "client": "Client", "vehicle": "Véhicule",
+    "dates": "Dates", "location": "Lieu",
+    "total": "Total", "status": "Statut"
+  }
 }
 
 }

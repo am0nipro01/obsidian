@@ -137,3 +137,28 @@
 .backLink:hover {
   color: var(--color-white);
 }
+
+.recap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-black-card);
+  margin-bottom: 0.5rem;
+}
+.recapLabel {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-white-muted);
+}
+.recapPrice {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-gold);
+}
+.error {
+  font-size: 0.8rem;
+  color: #e05c5c;
+}
