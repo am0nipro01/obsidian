@@ -65,21 +65,48 @@ export default function Reservation() {
       return
     }
     setLoading(true)
-    const { error } = await supabase.from('reservations').insert({
-      user_id: user.id,
-      vehicle_id: formData.vehicle_id,
-      pickup_date: formData.pickup,
-      return_date: formData.return,
-      location: formData.location,
-      total_price: total,
-      status: 'pending',
-    })
-    if (error) {
-      setError(error.message)
+
+    // 1. Sauvegarder la réservation en base
+    const { data: reservation, error: resError } = await supabase
+      .from('reservations')
+      .insert({
+        user_id: user.id,
+        vehicle_id: formData.vehicle_id,
+        pickup_date: formData.pickup,
+        return_date: formData.return,
+        location: formData.location,
+        total_price: total,
+        status: 'pending',
+      })
+      .select()
+      .single()
+
+    if (resError) {
+      setError(resError.message)
       setLoading(false)
       return
     }
-    navigate('/dashboard')
+
+    // 2. Créer la session Stripe et rediriger
+    const response = await fetch('/.netlify/functions/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        reservationId: reservation.id,
+        vehicleName: selectedVehicle.name,
+        totalPrice: total,
+      }),
+    })
+
+    const { url, error: stripeError } = await response.json()
+
+    if (stripeError) {
+      setError(stripeError)
+      setLoading(false)
+      return
+    }
+
+    window.location.href = url
   }
 
   return (

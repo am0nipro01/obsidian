@@ -198,3 +198,12 @@
     padding: 1.2rem;
   }
 }
+.successBanner {
+  background-color: rgba(111, 207, 151, 0.1);
+  border: 1px solid #6fcf97;
+  color: #6fcf97;
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}

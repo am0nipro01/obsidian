@@ -5,12 +5,17 @@ import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabase'
 import Footer from '../components/Footer/Footer'
 import styles from './Dashboard.module.css'
+import { useLocation } from 'react-router-dom'
+
 
 export default function Dashboard() {
   const { t } = useTranslation()
   const { user, profile } = useAuth()
   const [reservations, setReservations] = useState([])
   const [loading, setLoading] = useState(true)
+  const location = useLocation()
+  const paymentSuccess = new URLSearchParams(location.search).get('payment') === 'success'
+
 
   useEffect(() => {
     async function fetchReservations() {
@@ -45,6 +50,12 @@ export default function Dashboard() {
 
         {/* Header */}
         <div className={styles.header}>
+        {paymentSuccess && (
+            <div className={styles.successBanner}>
+                Paiement confirmé — votre réservation est en cours de traitement.
+            </div>
+        )}
+
           <div className="gold-line" />
           <h1 className={styles.title}>
             {t('dashboard.welcome')} {profile?.full_name?.split(' ')[0] || '—'}
