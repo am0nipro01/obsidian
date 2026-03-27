@@ -160,3 +160,26 @@
   .hamburger { display: flex; }
   .mobileMenu { display: block; }
 }
+.adminLink {
+  color: var(--color-gold) !important;
+}
+
+.signOutBtn {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-white-muted);
+  font-family: var(--font-body);
+  transition: color var(--transition);
+}
+.signOutBtn:hover { color: #e05c5c; }
+
+.mobileSignOut {
+  display: block;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e05c5c;
+  font-family: var(--font-body);
+}

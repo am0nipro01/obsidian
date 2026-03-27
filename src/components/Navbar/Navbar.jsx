@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useAuth } from '../../context/AuthContext'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
   const { t, i18n } = useTranslation()
+  const { user, profile, signOut } = useAuth()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
@@ -15,7 +17,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Ferme le menu à chaque changement de page
   useEffect(() => {
     setMenuOpen(false)
   }, [location])
@@ -38,6 +39,21 @@ export default function Navbar() {
               {t('nav.reservation')}
             </Link>
           </li>
+          {user ? (
+            <>
+              {profile?.role === 'admin' && (
+                <li><Link to="/admin" className={styles.adminLink}>Admin</Link></li>
+              )}
+              <li><Link to="/dashboard">{t('nav.dashboard')}</Link></li>
+              <li>
+                <button className={styles.signOutBtn} onClick={signOut}>
+                  {t('nav.signOut')}
+                </button>
+              </li>
+            </>
+          ) : (
+            <li><Link to="/login">{t('nav.login')}</Link></li>
+          )}
         </ul>
 
         <div className={styles.right}>
@@ -68,6 +84,24 @@ export default function Navbar() {
               {t('nav.reservation')}
             </Link>
           </li>
+          {user ? (
+            <>
+              {profile?.role === 'admin' && (
+                <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin</Link></li>
+              )}
+              <li><Link to="/dashboard" onClick={() => setMenuOpen(false)}>{t('nav.dashboard')}</Link></li>
+              <li>
+                <button
+                  className={styles.mobileSignOut}
+                  onClick={() => { signOut(); setMenuOpen(false) }}
+                >
+                  {t('nav.signOut')}
+                </button>
+              </li>
+            </>
+          ) : (
+            <li><Link to="/login" onClick={() => setMenuOpen(false)}>{t('nav.login')}</Link></li>
+          )}
         </ul>
       </div>
     </nav>

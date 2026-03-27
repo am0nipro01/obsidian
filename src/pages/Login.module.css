@@ -1,0 +1,117 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--color-black);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--color-black-card);
+  border: 1px solid var(--color-border);
+  padding: 3rem 2.5rem;
+}
+
+.logo {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+  transition: color var(--transition);
+}
+.logo:hover { color: var(--color-gold); }
+
+.goldLine {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-gold);
+  margin-bottom: 1.8rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--color-white);
+  margin-bottom: 2rem;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-white-muted);
+}
+
+.field input {
+  background-color: var(--color-black-soft);
+  border: 1px solid var(--color-border);
+  color: var(--color-white);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.field input::placeholder { color: #4a4540; }
+
+.field input:focus {
+  border-color: rgba(200, 169, 110, 0.5);
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #e05c5c;
+  letter-spacing: 0.02em;
+}
+
+.btn {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background-color var(--transition), opacity var(--transition);
+}
+
+.btn:hover { background-color: var(--color-gold-dark); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Toggle login/signup */
+.toggle {
+  font-size: 0.8rem;
+  color: var(--color-white-muted);
+  text-align: center;
+}
+
+.toggle button {
+  color: var(--color-gold);
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  text-decoration: underline;
+  transition: color var(--transition);
+}
+
+.toggle button:hover { color: var(--color-white); }

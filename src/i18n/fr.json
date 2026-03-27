@@ -2,7 +2,10 @@
   "nav": {
     "fleet": "Flotte",
     "howItWorks": "Comment ça marche",
-    "reservation": "Réservation"
+    "reservation": "Réservation",
+    "dashboard": "Mon espace",
+    "login": "Connexion",
+    "signOut": "Déconnexion"
   },
   "hero": {
     "tagline": "LOCATION PREMIUM",
@@ -66,5 +69,21 @@
     "address": "12 Avenue Montaigne, Paris",
     "copyright": "© 2025 OBSIDIAN. Tous droits réservés.",
     "legal": "Mentions légales"
-  }
+  },
+  "auth": {
+  "loginTitle": "Bon retour.",
+  "signupTitle": "Créer un compte.",
+  "fullName": "Nom complet",
+  "fullNamePlaceholder": "Votre nom",
+  "email": "Email",
+  "emailPlaceholder": "votre@email.com",
+  "password": "Mot de passe",
+  "loginBtn": "Se connecter",
+  "signupBtn": "Créer mon compte",
+  "noAccount": "Pas encore de compte ?",
+  "hasAccount": "Déjà un compte ?",
+  "signupLink": "S'inscrire",
+  "loginLink": "Se connecter"
+}
+
 }

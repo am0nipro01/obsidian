@@ -2,7 +2,10 @@
   "nav": {
     "fleet": "Fleet",
     "howItWorks": "How It Works",
-    "reservation": "Reservation"
+    "reservation": "Reservation",
+    "dashboard": "My space",
+    "login": "Login",
+    "signOut": "Sign out"
   },
   "hero": {
     "tagline": "PREMIUM RENTAL",
@@ -66,5 +69,21 @@
     "address": "12 Avenue Montaigne, Paris",
     "copyright": "© 2025 OBSIDIAN. All rights reserved.",
     "legal": "Legal notice"
-  }
+  },
+  "auth": {
+  "loginTitle": "Welcome back.",
+  "signupTitle": "Create an account.",
+  "fullName": "Full name",
+  "fullNamePlaceholder": "Your name",
+  "email": "Email",
+  "emailPlaceholder": "your@email.com",
+  "password": "Password",
+  "loginBtn": "Sign in",
+  "signupBtn": "Create account",
+  "noAccount": "No account yet?",
+  "hasAccount": "Already have an account?",
+  "signupLink": "Sign up",
+  "loginLink": "Sign in"
+}
+
 }
