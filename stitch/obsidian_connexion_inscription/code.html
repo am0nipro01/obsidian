@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "secondary-fixed": "#e1e2eb",
+                "error": "#ba1a1a",
+                "on-secondary-container": "#62646c",
+                "surface-tint": "#2455cc",
+                "surface-container-high": "#e6e8f0",
+                "outline-variant": "#c3c6d6",
+                "on-primary-container": "#f9f7ff",
+                "inverse-surface": "#2d3037",
+                "error-container": "#ffdad6",
+                "tertiary": "#1c50c7",
+                "inverse-primary": "#b4c4ff",
+                "surface-container-highest": "#e1e2eb",
+                "on-background": "#191c22",
+                "on-error": "#ffffff",
+                "on-primary": "#ffffff",
+                "secondary": "#5c5e65",
+                "on-primary-fixed-variant": "#003dab",
+                "inverse-on-surface": "#eff0f9",
+                "primary": "#1c50c7",
+                "on-secondary-fixed": "#191c22",
+                "on-primary-fixed": "#00174c",
+                "surface-container-low": "#f2f3fc",
+                "on-tertiary-fixed-variant": "#003dab",
+                "on-tertiary-container": "#f9f7ff",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed-variant": "#44474e",
+                "primary-fixed": "#dbe1ff",
+                "tertiary-fixed": "#dbe1ff",
+                "surface-bright": "#f9f9ff",
+                "tertiary-fixed-dim": "#b4c4ff",
+                "surface-container": "#ecedf6",
+                "on-tertiary-fixed": "#00174c",
+                "on-error-container": "#93000a",
+                "background": "#f9f9ff",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#e1e2eb",
+                "tertiary-container": "#3e6ae1",
+                "outline": "#747685",
+                "surface-dim": "#d8dae2",
+                "secondary-fixed-dim": "#c4c6ce",
+                "on-surface-variant": "#434654",
+                "on-surface": "#191c22",
+                "on-secondary": "#ffffff",
+                "primary-fixed-dim": "#b4c4ff",
+                "primary-container": "#3e6ae1",
+                "surface-variant": "#e1e2eb",
+                "surface": "#f9f9ff"
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #1c50c7 0%, #3e6ae1 100%);
+        }
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<main class="flex-grow flex items-center justify-center px-6 py-12 relative overflow-hidden">
+<div class="absolute inset-0 z-0 pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[100px]"></div>
+</div>
+<div class="w-full max-w-md z-10">
+<div class="mb-12 flex justify-center">
+<span class="font-headline text-3xl font-black tracking-tighter text-on-surface">OBSIDIAN</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-8 md:p-12 transition-all duration-500">
+<div class="mb-10 text-center">
+<h1 class="font-headline text-2xl font-bold tracking-tight mb-2">Welcome Back</h1>
+<p class="text-on-surface-variant text-sm tracking-wide">Enter your details to access your fleet.</p>
+</div>
+<form class="space-y-6">
+<div class="space-y-1.5">
+<label class="block text-xs font-semibold uppercase tracking-widest text-on-surface-variant px-1" for="email">Email Address</label>
+<input class="w-full px-5 py-4 bg-surface-container-high border-none rounded-md focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-lowest transition-all placeholder:text-outline duration-200" id="email" placeholder="name@example.com" type="email"/>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-end px-1">
+<label class="block text-xs font-semibold uppercase tracking-widest text-on-surface-variant" for="password">Password</label>
+<a class="text-[10px] font-bold text-primary uppercase tracking-tighter hover:opacity-80 transition-opacity" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<input class="w-full px-5 py-4 bg-surface-container-high border-none rounded-md focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-lowest transition-all placeholder:text-outline duration-200" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+<p class="text-[11px] text-error mt-1 px-1 font-medium hidden">Incorrect password. Please try again.</p>
+</div>
+<button class="w-full py-4 signature-gradient text-on-primary font-headline font-bold tracking-tight rounded-md shadow-lg shadow-primary/10 hover:opacity-90 active:scale-[0.98] transition-all duration-200 mt-4">
+                        Sign In
+                    </button>
+</form>
+<div class="mt-10 pt-8 border-t border-outline-variant/10 text-center">
+<p class="text-sm text-on-surface-variant mb-4">New to Obsidian?</p>
+<button class="text-primary font-bold text-sm tracking-tight hover:underline underline-offset-8 decoration-primary/30 transition-all">
+                        Create Account
+                    </button>
+</div>
+</div>
+<div class="mt-12 flex justify-center gap-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<img alt="Trusted Partner Logo" class="h-4 object-contain" data-alt="minimalist luxury automotive brand logo in monochrome grey on transparent background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgds6F0WyUcjtwbhvgvmvTiQvxxUKpxYNxrZiL_CrCXAki3zPT4vCPWU-hkEIBU5A3oednF46yxh8owa8B5Vn0CnC4OBScIKfRY00BwCabpwxR34UVezD3bMbq6w93-yOn8hMdMI0Nr5UuQ7QgBh7-t-a1Vf73PJxhtnLi-8s5KrdrvD0JRNQFPffbiyPTg8NIYywCMMPniZ2XYVB7wu6UtvdEqLw3T3Q7teLvFzV0AL14TGo5nFB0G0se9eThJly-9ZhIo0a25eM"/>
+<img alt="Security Certification Logo" class="h-4 object-contain" data-alt="high-end technology security certification badge in sleek vector style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-L4wVeAVL-5IUM5WooEEyaN7XGjLUc1Tt1P3z4YJZ7CTUexuaq3TqPc7fXNE6jpIjlqabf4whr0GV-ZoMrd5SQaXNBgqq2d1clZ6tY15i8D5IM_Qfx5qHKEP63xzgu3g8cxJ6r3Kj6VvupHZhztqvaJkTAvOITjnBw-xRKS7UcFmVsVQhSsFIeJ5GLQl4ktJasAcDuwXrQU9LCLhhQoDVsweyQ4_orPAbdCs0vRvmv0-LhmK4h1oCArFmCj6RCSIyOgYBhe_dmzo"/>
+</div>
+</div>
+</main>
+<footer class="w-full pt-20 pb-10 bg-slate-100 dark:bg-slate-900">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto font-['Inter'] text-sm tracking-wide">
+<div class="col-span-1 md:col-span-1">
+<span class="text-xl font-black text-slate-900 dark:text-white block mb-4">OBSIDIAN</span>
+<p class="text-slate-500 dark:text-slate-400 leading-relaxed">Redefining the standard of luxury mobility through technological precision.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-xs">Fleet</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 hover:underline decoration-blue-600 dark:decoration-blue-500 underline-offset-4 transition-all duration-200 ease-in-out" href="#">Performance</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 hover:underline decoration-blue-600 dark:decoration-blue-500 underline-offset-4 transition-all duration-200 ease-in-out" href="#">Executive</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 hover:underline decoration-blue-600 dark:decoration-blue-500 underline-offset-4 transition-all duration-200 ease-in-out" href="#">Electric</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-xs">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 hover:underline decoration-blue-600 dark:decoration-blue-500 underline-offset-4 transition-all duration-200 ease-in-out" href="#">About</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 hover:underline decoration-blue-600 dark:decoration-blue-500 underline-offset-4 transition-all duration-200 ease-in-out" href="#">Support</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 hover:underline decoration-blue-600 dark:decoration-blue-500 underline-offset-4 transition-all duration-200 ease-in-out" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-xs">Stay Connected</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 cursor-pointer hover:text-blue-600 transition-colors">language</span>
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 cursor-pointer hover:text-blue-600 transition-colors">share</span>
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 cursor-pointer hover:text-blue-600 transition-colors">mail</span>
+</div>
+</div>
+</div>
+<div class="mt-20 px-12 max-w-7xl mx-auto border-t border-slate-200 dark:border-slate-800 pt-8">
+<p class="text-slate-500 dark:text-slate-400 text-[10px] uppercase tracking-[0.2em]">© 2024 OBSIDIAN Automotive Group. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

@@ -1,6 +1,6 @@
 .section {
   padding: var(--section-padding);
-  background-color: var(--color-black);
+  background-color: var(--surface);
 }
 
 .container {
@@ -10,7 +10,38 @@
 }
 
 .header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
   margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.headerLeft { flex: 1; }
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.chip {
+  padding: 0.4rem 1rem;
+  background-color: var(--surface-highest);
+  color: var(--on-surface-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition), color var(--transition);
+}
+.chip:hover { background-color: var(--surface-high); color: var(--on-surface); }
+.chipActive {
+  background: var(--primary-gradient);
+  color: #ffffff;
 }
 
 .grid {
@@ -19,14 +50,30 @@
   gap: 1.5rem;
 }
 
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .header { flex-direction: column; }
 }
 
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+/* Featured row */
+.featuredRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: stretch;
+}
+
+.featuredCompanion {
+  display: flex;
+  flex-direction: column;
+}
+
+.featuredCompanion > * {
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .featuredRow { grid-template-columns: 1fr; }
 }

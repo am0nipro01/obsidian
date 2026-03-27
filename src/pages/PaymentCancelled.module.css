@@ -1,0 +1,50 @@
+.page { min-height: 100vh; background-color: var(--surface); display: flex; flex-direction: column; }
+
+.content {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 8rem 2rem 6rem;
+}
+
+.icon {
+  width: 64px; height: 64px;
+  background-color: rgba(186, 26, 26, 0.1);
+  color: var(--error);
+  font-size: 1.5rem; font-weight: 700;
+  border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--on-surface);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1rem; color: var(--on-surface-muted);
+  max-width: 400px; line-height: 1.7; margin-bottom: 3rem;
+}
+
+.actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+.btnPrimary {
+  display: inline-flex; align-items: center;
+  padding: 0.85rem 1.8rem;
+  background: var(--primary-gradient); color: #ffffff;
+  font-size: 0.85rem; font-weight: 600; border-radius: var(--radius-md);
+  transition: opacity var(--transition);
+}
+.btnPrimary:hover { opacity: 0.88; }
+
+.btnGhost {
+  display: inline-flex; align-items: center;
+  padding: 0.85rem 1.8rem;
+  background-color: var(--surface-highest); color: var(--on-surface);
+  font-size: 0.85rem; font-weight: 500; border-radius: var(--radius-md);
+  transition: background-color var(--transition);
+}
+.btnGhost:hover { background-color: var(--surface-high); }

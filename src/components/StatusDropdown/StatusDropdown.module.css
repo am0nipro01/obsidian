@@ -1,0 +1,88 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Trigger button */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.75rem 0.38rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: var(--surface-lowest);
+  transition: background-color var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+.trigger:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+/* Status colors for trigger */
+.pending   { color: #b45309; border-color: #b45309; background-color: #fffbeb; }
+.paid      { color: #16a34a; border-color: #16a34a; background-color: #f0fdf4; }
+.cancelled { color: var(--on-surface-muted); border-color: var(--outline-variant); background-color: var(--surface-low); }
+
+/* Dot indicator */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot_pending   { background-color: #b45309; }
+.dot_paid      { background-color: #16a34a; }
+.dot_cancelled { background-color: var(--outline-variant); }
+
+/* Chevron icon */
+.chevron {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.chevronOpen { transform: rotate(180deg); }
+
+/* Dropdown menu */
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  background-color: var(--surface-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(25,28,34,0.12);
+  overflow: hidden;
+  z-index: 50;
+  animation: menuIn 0.15s ease both;
+}
+
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Option row */
+.option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--transition);
+}
+.option:hover { background-color: var(--surface-low); }
+.optionActive { background-color: var(--surface-low); font-weight: 700; }

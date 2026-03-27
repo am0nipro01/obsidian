@@ -6,7 +6,7 @@ export default function Footer() {
   const { t } = useTranslation()
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} reveal`}>
       <div className={styles.container}>
 
         <div className={styles.top}>

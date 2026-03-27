@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../context/AuthContext'
+import { scrollToSection } from '../../utils/scrollToSection'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
@@ -10,6 +11,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const isHome = location.pathname === '/'
+  const isTransparent = isHome && !scrolled && !menuOpen
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -17,59 +22,66 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [location])
+  useEffect(() => { setMenuOpen(false) }, [location])
 
   const toggleLang = () => {
     i18n.changeLanguage(i18n.language.startsWith('fr') ? 'en' : 'fr')
   }
 
-  return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''}`}>
-      <div className={styles.inner}>
-        <Link to="/" className={styles.logo}>OBSIDIAN</Link>
+  const handleLogoClick = (e) => {
+    if (isHome) {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
 
-        {/* Desktop links */}
+  const handleNavLink = (e, sectionId) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    if (isHome) {
+      scrollToSection(sectionId)
+    } else {
+      navigate('/', { state: { scrollTo: sectionId } })
+    }
+  }
+
+  return (
+    <nav className={`${styles.navbar} ${isTransparent ? styles.transparent : styles.solid} ${menuOpen ? styles.menuOpen : ''}`}>
+      <div className={styles.inner}>
+        <Link to="/" className={styles.logo} onClick={handleLogoClick}>OBSIDIAN</Link>
+
+        {/* Desktop center links */}
         <ul className={styles.links}>
-          <li><a href="/#fleet">{t('nav.fleet')}</a></li>
-          <li><a href="/#how-it-works">{t('nav.howItWorks')}</a></li>
           <li>
-            <Link to="/reservation" className={styles.ctaLink}>
-              {t('nav.reservation')}
-            </Link>
+            <a href="/#fleet" onClick={(e) => handleNavLink(e, 'fleet')}>
+              {t('nav.fleet')}
+            </a>
           </li>
-          {user ? (
-            <>
-              {profile?.role === 'admin' && (
-                <li><Link to="/admin" className={styles.adminLink}>Admin</Link></li>
-              )}
-              <li><Link to="/dashboard">{t('nav.dashboard')}</Link></li>
-              <li>
-                <button className={styles.signOutBtn} onClick={signOut}>
-                  {t('nav.signOut')}
-                </button>
-              </li>
-            </>
-          ) : (
-            <li><Link to="/login">{t('nav.login')}</Link></li>
+          <li>
+            <a href="/#how-it-works" onClick={(e) => handleNavLink(e, 'how-it-works')}>
+              {t('nav.howItWorks')}
+            </a>
+          </li>
+          {user && (
+            <li><Link to="/dashboard">{t('nav.dashboard')}</Link></li>
+          )}
+          {user && profile?.role === 'admin' && (
+            <li><Link to="/admin" className={styles.adminLink}>Admin</Link></li>
           )}
         </ul>
 
+        {/* Desktop right: lang toggle + auth */}
         <div className={styles.right}>
           <button className={styles.langBtn} onClick={toggleLang} aria-label="Switch language">
             {i18n.language.startsWith('fr') ? 'EN' : 'FR'}
           </button>
-
-          {/* Hamburger */}
-          <button
-            className={styles.hamburger}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span />
-            <span />
-            <span />
+          {user ? (
+            <button className={styles.authBtn} onClick={signOut}>{t('nav.signOut')}</button>
+          ) : (
+            <Link to="/login" className={styles.authBtn}>{t('nav.login')}</Link>
+          )}
+          <button className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+            <span /><span /><span />
           </button>
         </div>
       </div>
@@ -77,28 +89,28 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}>
         <ul className={styles.mobileLinks}>
-          <li><a href="/#fleet" onClick={() => setMenuOpen(false)}>{t('nav.fleet')}</a></li>
-          <li><a href="/#how-it-works" onClick={() => setMenuOpen(false)}>{t('nav.howItWorks')}</a></li>
           <li>
-            <Link to="/reservation" className={styles.mobileCta} onClick={() => setMenuOpen(false)}>
-              {t('nav.reservation')}
-            </Link>
+            <a href="/#fleet" onClick={(e) => handleNavLink(e, 'fleet')}>
+              {t('nav.fleet')}
+            </a>
           </li>
+          <li>
+            <a href="/#how-it-works" onClick={(e) => handleNavLink(e, 'how-it-works')}>
+              {t('nav.howItWorks')}
+            </a>
+          </li>
+          {user && (
+            <li><Link to="/dashboard" onClick={() => setMenuOpen(false)}>{t('nav.dashboard')}</Link></li>
+          )}
+          {user && profile?.role === 'admin' && (
+            <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin</Link></li>
+          )}
           {user ? (
-            <>
-              {profile?.role === 'admin' && (
-                <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin</Link></li>
-              )}
-              <li><Link to="/dashboard" onClick={() => setMenuOpen(false)}>{t('nav.dashboard')}</Link></li>
-              <li>
-                <button
-                  className={styles.mobileSignOut}
-                  onClick={() => { signOut(); setMenuOpen(false) }}
-                >
-                  {t('nav.signOut')}
-                </button>
-              </li>
-            </>
+            <li>
+              <button className={styles.mobileSignOut} onClick={() => { signOut(); setMenuOpen(false) }}>
+                {t('nav.signOut')}
+              </button>
+            </li>
           ) : (
             <li><Link to="/login" onClick={() => setMenuOpen(false)}>{t('nav.login')}</Link></li>
           )}

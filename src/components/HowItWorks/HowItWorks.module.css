@@ -1,8 +1,6 @@
 .section {
   padding: var(--section-padding);
-  background-color: var(--color-black-soft);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--surface-low);
 }
 
 .container {
@@ -11,11 +9,8 @@
   padding: 0 2rem;
 }
 
-.header {
-  margin-bottom: 4rem;
-}
+.header { margin-bottom: 4rem; }
 
-/* Steps grid */
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -27,72 +22,49 @@
   padding: 0 3rem 0 0;
   position: relative;
 }
+.step:last-child { padding-right: 0; }
 
-.step:last-child {
-  padding-right: 0;
-}
-
-/* Number */
 .number {
   display: block;
-  font-family: var(--font-heading);
-  font-size: 4rem;
-  font-weight: 300;
-  color: var(--color-border);
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--outline-variant);
   line-height: 1;
   margin-bottom: 1.5rem;
   transition: color var(--transition-slow);
 }
-
-.step:hover .number {
-  color: var(--color-gold);
-}
-
-/* Horizontal connector line between steps */
-.connector {
-  display: none;
-}
+.step:hover .number { color: var(--primary); }
 
 .step:not(:last-child)::after {
   content: '';
   position: absolute;
-  top: 2rem;
+  top: 1.75rem;
   right: 0;
-  width: 3rem;
+  width: 2.5rem;
   height: 1px;
-  background: linear-gradient(to right, var(--color-border), transparent);
+  background: linear-gradient(to right, var(--outline-variant), transparent);
 }
 
-/* Text */
 .stepTitle {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: var(--color-white);
-  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+  margin-bottom: 0.75rem;
 }
 
 .stepDesc {
-  font-size: 0.9rem;
-  color: var(--color-white-muted);
+  font-size: 0.88rem;
+  color: var(--on-surface-muted);
   line-height: 1.8;
   max-width: 280px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .steps {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .step:not(:last-child)::after {
-    display: none;
-  }
-
-  .step {
-    padding: 0;
-    border-left: 1px solid var(--color-border);
-    padding-left: 1.5rem;
-  }
+  .steps { grid-template-columns: 1fr; gap: 2.5rem; }
+  .step:not(:last-child)::after { display: none; }
+  .step { padding: 0 0 0 1.5rem; border-left: 2px solid var(--outline-variant); }
 }

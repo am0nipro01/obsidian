@@ -1,164 +1,93 @@
 .page {
   min-height: 100vh;
-  background-color: var(--color-black);
-  padding: 10rem 2rem 10rem;
+  background-color: var(--surface);
+  padding-top: 6rem;
 }
 
 .container {
-  max-width: 760px;
+  max-width: 860px;
   margin: 0 auto;
+  padding: 2rem 2rem 6rem;
 }
 
-.header {
-  margin-bottom: 3.5rem;
-}
+.header { margin-bottom: 3rem; }
 
-/* Form */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+.form { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
 }
+.row:has(.field:only-child) { grid-template-columns: 1fr; }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
 
 .label {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-white-muted);
+  font-weight: 600;
+  color: var(--on-surface-muted);
 }
 
 .input {
-  background-color: var(--color-black-card);
-  border: 1px solid var(--color-border);
-  color: var(--color-white);
-  font-family: var(--font-body);
+  background-color: var(--surface-high);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--on-surface);
+  padding: 0.85rem 1rem;
   font-size: 0.9rem;
-  padding: 0.9rem 1.1rem;
   outline: none;
-  transition: border-color var(--transition);
-  appearance: none;
-  -webkit-appearance: none;
+  transition: border-color var(--transition), background-color var(--transition);
   width: 100%;
 }
+.input::placeholder { color: var(--outline-variant); }
+.input:focus { background-color: var(--surface-lowest); border-color: rgba(28,80,199,0.4); }
 
-.input:focus {
-  border-color: var(--color-gold);
-}
-
-.input::placeholder {
-  color: var(--color-white-muted);
-  opacity: 0.5;
-}
-
-/* Fix date input color on dark background */
-.input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5);
-  cursor: pointer;
-}
-
-/* Select arrow custom */
-.field select.input {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9189' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1.1rem center;
-  padding-right: 2.5rem;
-  cursor: pointer;
-}
-
-.input option {
-  background-color: var(--color-black-card);
-  color: var(--color-white);
-}
-
-/* Submit */
-.submit {
-  align-self: flex-start;
-  margin-top: 1rem;
-  padding: 1rem 2.5rem;
-  background-color: var(--color-gold);
-  color: var(--color-black);
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: background-color var(--transition), transform var(--transition);
-}
-
-.submit:hover {
-  background-color: var(--color-gold-dark);
-  transform: translateY(-2px);
-}
-
-/* Success state */
-.successPage {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-black);
-  padding: 2rem;
-}
-
-.successBox {
-  text-align: center;
-  max-width: 480px;
-}
-
-.successTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 300;
-  color: var(--color-white);
-  margin-bottom: 2rem;
-  line-height: 1.5;
-}
-
-.backLink {
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  transition: color var(--transition);
-}
-
-.backLink:hover {
-  color: var(--color-white);
-}
-
+/* Price recap */
 .recap {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 1.5rem;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-black-card);
-  margin-bottom: 0.5rem;
+  background-color: rgba(28, 80, 199, 0.05);
+  border: 1.5px solid rgba(28, 80, 199, 0.15);
+  border-radius: var(--radius-md);
 }
 .recapLabel {
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-white-muted);
+  color: var(--on-surface-muted);
 }
 .recapPrice {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 1.8rem;
-  color: var(--color-gold);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--primary);
 }
+
 .error {
-  font-size: 0.8rem;
-  color: #e05c5c;
+  font-size: 0.82rem;
+  color: var(--error);
+  font-weight: 500;
 }
+
+.submit {
+  padding: 1rem 2rem;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: opacity var(--transition);
+  width: fit-content;
+}
+.submit:hover { opacity: 0.88; }
+.submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 640px) { .row { grid-template-columns: 1fr; } }

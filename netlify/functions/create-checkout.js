@@ -6,25 +6,29 @@ exports.handler = async (event) => {
   }
 
   try {
-    const { reservationId, vehicleName, totalPrice } = JSON.parse(event.body)
+    const { reservationId, vehicleName, totalPrice, lang } = JSON.parse(event.body)
     const origin = event.headers.origin || event.headers.referer?.replace(/\/$/, '')
+
+    const isFr = lang && lang.startsWith('fr')
+    const successPath = isFr ? 'reservation-confirmee' : 'booking-confirmed'
+    const cancelPath = isFr ? 'paiement-annule' : 'payment-cancelled'
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{
         price_data: {
-          currency: 'eur',
+          currency: isFr ? 'eur' : 'usd',
           product_data: {
             name: `OBSIDIAN — ${vehicleName}`,
-            description: 'Location de véhicule premium',
+            description: isFr ? 'Location de véhicule premium' : 'Premium vehicle rental',
           },
           unit_amount: totalPrice * 100,
         },
         quantity: 1,
       }],
       mode: 'payment',
-      success_url: `${origin}/dashboard?payment=success`,
-      cancel_url: `${origin}/reservation?payment=cancelled`,
+      success_url: `${origin}/${successPath}?id=${reservationId}`,
+      cancel_url: `${origin}/${cancelPath}`,
       metadata: { reservationId },
     })
 

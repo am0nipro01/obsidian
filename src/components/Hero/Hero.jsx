@@ -12,7 +12,10 @@ export default function Hero() {
       <div className={styles.content}>
         <span className={styles.tagline}>{t('hero.tagline')}</span>
 
-        <h1 className={styles.title}>{t('hero.title')}</h1>
+        <h1 className={styles.title}>
+          {t('hero.titleLine1')}<br />
+          <em>{t('hero.titleLine2')}</em>
+        </h1>
 
         <p className={styles.subtitle}>{t('hero.subtitle')}</p>
 
@@ -20,14 +23,12 @@ export default function Hero() {
           <Link to="/reservation" className={styles.btnPrimary}>
             {t('hero.cta')}
           </Link>
-          <a href="/#fleet" className={styles.btnSecondary}>
-            {t('hero.ctaSecondary')}
-          </a>
         </div>
       </div>
 
       <div className={styles.scrollHint}>
-        <span />
+        <span className={styles.scrollLabel}>SCROLL</span>
+        <span className={styles.scrollLine} />
       </div>
     </section>
   )

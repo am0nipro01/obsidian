@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 import Footer from '../components/Footer/Footer'
+import StatusDropdown from '../components/StatusDropdown/StatusDropdown'
 import styles from './Admin.module.css'
 
 const EMPTY_FORM = { name: '', category: 'Sedan', price_per_day: '', image_url: '', available: true }
@@ -75,6 +76,18 @@ export default function Admin() {
     fetchAll()
   }
 
+  async function handleDeleteReservation(id) {
+    if (!window.confirm('Supprimer cette réservation ?')) return
+    // Optimistic update: remove immediately from UI
+    setReservations(prev => prev.filter(r => r.id !== id))
+    const { error } = await supabase.from('reservations').delete().eq('id', id)
+    if (error) {
+      console.error('Delete error:', error)
+      alert('Erreur lors de la suppression. Vérifiez les permissions Supabase.')
+      fetchAll() // revert on error
+    }
+  }
+
   const formatDate = (d) => new Date(d).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' })
 
   return (
@@ -133,9 +146,11 @@ export default function Admin() {
                       </div>
                       <div className={styles.field}>
                         <label>{t('admin.vehicles.category')}</label>
-                        <select value={form.category} onChange={e => setForm({...form, category: e.target.value})}>
-                          {CATEGORIES.map(c => <option key={c}>{c}</option>)}
-                        </select>
+                        <div className="select-wrapper">
+                          <select value={form.category} onChange={e => setForm({...form, category: e.target.value})}>
+                            {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+                          </select>
+                        </div>
                       </div>
                       <div className={styles.field}>
                         <label>{t('admin.vehicles.price')}</label>
@@ -200,15 +215,24 @@ export default function Admin() {
                     </div>
                     <div className={styles.resRight}>
                       {r.total_price && <span className={styles.resTotal}>{r.total_price}€</span>}
-                      <select
-                        className={`${styles.statusSelect} ${styles[r.status]}`}
+                      <StatusDropdown
                         value={r.status}
-                        onChange={e => handleStatusChange(r.id, e.target.value)}
+                        options={STATUSES.map(s => ({ value: s, label: t(`dashboard.status.${s}`) }))}
+                        onChange={(status) => handleStatusChange(r.id, status)}
+                      />
+                      <button
+                        className={styles.deleteResBtn}
+                        onClick={() => handleDeleteReservation(r.id)}
+                        aria-label="Supprimer la réservation"
+                        title="Supprimer"
                       >
-                        {STATUSES.map(s => (
-                          <option key={s} value={s}>{t(`dashboard.status.${s}`)}</option>
-                        ))}
-                      </select>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="3 6 5 6 21 6" />
+                          <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                          <path d="M10 11v6M14 11v6" />
+                          <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 ))}

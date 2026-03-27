@@ -6,10 +6,9 @@ export default function HowItWorks() {
   const steps = t('howItWorks.steps', { returnObjects: true })
 
   return (
-    <section id="how-it-works" className={styles.section}>
+    <section id="how-it-works" className={`${styles.section} reveal`}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <div className="gold-line" />
           <h2 className="section-title">{t('howItWorks.title')}</h2>
           <p className="section-subtitle">{t('howItWorks.subtitle')}</p>
         </div>

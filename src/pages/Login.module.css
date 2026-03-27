@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  background-color: var(--color-black);
+  background-color: var(--surface-low);
   display: grid;
   place-items: center;
   padding: 2rem;
@@ -9,109 +9,100 @@
 .card {
   width: 100%;
   max-width: 420px;
-  background-color: var(--color-black-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--surface-lowest);
+  border-radius: var(--radius-lg);
   padding: 3rem 2.5rem;
+  box-shadow: 0 4px 24px rgba(25,28,34,0.06);
 }
 
 .logo {
   display: block;
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  letter-spacing: 0.3em;
-  color: var(--color-white);
-  margin-bottom: 1.5rem;
-  transition: color var(--transition);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--on-surface);
+  margin-bottom: 2rem;
+  transition: opacity var(--transition);
 }
-.logo:hover { color: var(--color-gold); }
+.logo:hover { opacity: 0.7; }
 
 .goldLine {
-  width: 2.5rem;
-  height: 1px;
-  background: var(--color-gold);
+  width: 2rem;
+  height: 2px;
+  background: var(--primary-gradient);
+  border-radius: var(--radius-full);
   margin-bottom: 1.8rem;
 }
 
 .title {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
   margin-bottom: 2rem;
 }
 
-/* Form */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin-bottom: 1.5rem;
-}
+.form { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 1.5rem; }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
 
 .field label {
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-white-muted);
+  font-weight: 600;
+  color: var(--on-surface-muted);
 }
 
 .field input {
-  background-color: var(--color-black-soft);
-  border: 1px solid var(--color-border);
-  color: var(--color-white);
-  padding: 0.85rem 1rem;
-  font-family: var(--font-body);
+  background-color: var(--surface-high);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--on-surface);
+  padding: 0.8rem 1rem;
   font-size: 0.9rem;
   outline: none;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), background-color var(--transition);
 }
-
-.field input::placeholder { color: #4a4540; }
-
+.field input::placeholder { color: var(--outline-variant); }
 .field input:focus {
-  border-color: rgba(200, 169, 110, 0.5);
+  background-color: var(--surface-lowest);
+  border-color: rgba(28, 80, 199, 0.4);
 }
 
 .error {
   font-size: 0.8rem;
-  color: #e05c5c;
-  letter-spacing: 0.02em;
+  color: var(--error);
+  font-weight: 500;
 }
 
 .btn {
   margin-top: 0.5rem;
-  padding: 1rem;
-  background-color: var(--color-gold);
-  color: var(--color-black);
+  padding: 0.9rem;
+  background: var(--primary-gradient);
+  color: #ffffff;
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  transition: background-color var(--transition), opacity var(--transition);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: opacity var(--transition);
 }
-
-.btn:hover { background-color: var(--color-gold-dark); }
+.btn:hover { opacity: 0.88; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* Toggle login/signup */
 .toggle {
-  font-size: 0.8rem;
-  color: var(--color-white-muted);
+  font-size: 0.82rem;
+  color: var(--on-surface-muted);
   text-align: center;
 }
-
 .toggle button {
-  color: var(--color-gold);
-  font-size: 0.8rem;
+  color: var(--primary);
+  font-size: 0.82rem;
   font-family: var(--font-body);
+  font-weight: 500;
   text-decoration: underline;
-  transition: color var(--transition);
+  transition: opacity var(--transition);
 }
-
-.toggle button:hover { color: var(--color-white); }
+.toggle button:hover { opacity: 0.7; }

@@ -8,17 +8,21 @@
     "signOut": "Déconnexion"
   },
   "hero": {
-    "tagline": "LOCATION PREMIUM",
-    "title": "Conduisez\nautrement.",
-    "subtitle": "Des véhicules d'exception. Une expérience irréprochable. À votre service.",
-    "cta": "Réserver maintenant",
-    "ctaSecondary": "Voir la flotte"
+    "tagline": "EXCELLENCE AUTOMOBILE",
+    "titleLine1": "Le luxe à l'état",
+    "titleLine2": "Obsidian",
+    "subtitle": "Découvrez l'excellence de la mobilité premium. Notre flotte de véhicules d'exception vous offre une présence incomparable sur la route.",
+    "cta": "Réservez ici"
   },
   "fleet": {
     "title": "Notre Flotte",
     "subtitle": "Choisissez le véhicule à la hauteur de vos ambitions",
     "perDay": "/ jour",
-    "cta": "Réserver ce véhicule"
+    "cta": "Réserver ce véhicule",
+    "filterAll": "Tous",
+    "specRange": "Autonomie",
+    "specTopSpeed": "Vitesse Max",
+    "spec060": "0-100 km/h"
   },
   "howItWorks": {
     "title": "Comment ça fonctionne",
@@ -129,6 +133,19 @@
     "dates": "Dates", "location": "Lieu",
     "total": "Total", "status": "Statut"
   }
+},
+"bookingConfirmed": {
+  "title": "RÉSERVATION CONFIRMÉE.",
+  "subtitle": "Votre réservation est sécurisée. Un récapitulatif vous sera envoyé par email.",
+  "viewReservations": "Voir mes réservations",
+  "backToFleet": "Retour à la flotte",
+  "ref": "Réf.",
+  "pickup": "Prise en charge",
+  "return": "Retour",
+  "location": "Lieu",
+  "total": "Total",
+  "days": "jours",
+  "day": "jour"
 }
 
 }

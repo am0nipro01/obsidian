@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OBSIDIAN | Vehicle Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#e1e2eb",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#62646c",
+                        "surface-tint": "#2455cc",
+                        "surface-container-high": "#e6e8f0",
+                        "outline-variant": "#c3c6d6",
+                        "on-primary-container": "#f9f7ff",
+                        "inverse-surface": "#2d3037",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#1c50c7",
+                        "inverse-primary": "#b4c4ff",
+                        "surface-container-highest": "#e1e2eb",
+                        "on-background": "#191c22",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary": "#5c5e65",
+                        "on-primary-fixed-variant": "#003dab",
+                        "inverse-on-surface": "#eff0f9",
+                        "primary": "#1c50c7",
+                        "on-secondary-fixed": "#191c22",
+                        "on-primary-fixed": "#00174c",
+                        "surface-container-low": "#f2f3fc",
+                        "on-tertiary-fixed-variant": "#003dab",
+                        "on-tertiary-container": "#f9f7ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#44474e",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary-fixed-dim": "#b4c4ff",
+                        "surface-container": "#ecedf6",
+                        "on-tertiary-fixed": "#00174c",
+                        "on-error-container": "#93000a",
+                        "background": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e1e2eb",
+                        "tertiary-container": "#3e6ae1",
+                        "outline": "#747685",
+                        "surface-dim": "#d8dae2",
+                        "secondary-fixed-dim": "#c4c6ce",
+                        "on-surface-variant": "#434654",
+                        "on-surface": "#191c22",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#b4c4ff",
+                        "primary-container": "#3e6ae1",
+                        "surface-variant": "#e1e2eb",
+                        "surface": "#f9f9ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+            color: #191c22;
+        }
+        .headline-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-full mx-auto">
+<div class="text-2xl font-black tracking-tighter text-slate-900 dark:text-white headline-font">OBSIDIAN</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-900 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-500 transition-colors font-bold tracking-tight headline-font" href="#">Fleet</a>
+<a class="text-slate-900 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-500 transition-colors font-bold tracking-tight headline-font" href="#">Services</a>
+<a class="text-slate-900 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-500 transition-colors font-bold tracking-tight headline-font" href="#">Experience</a>
+<a class="text-slate-900 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-500 transition-colors font-bold tracking-tight headline-font" href="#">Company</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:text-blue-600 transition-all duration-200 headline-font font-bold">Sign In</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-md font-bold headline-font hover:opacity-80 transition-all duration-300 scale-95-active">Book Now</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-8 max-w-[1440px] mx-auto">
+<!-- Progress Stepper -->
+<div class="mb-16">
+<div class="flex items-center justify-between max-w-4xl mx-auto">
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">1</div>
+<span class="text-sm font-bold headline-font text-primary">Vehicle Selection</span>
+</div>
+<div class="flex-1 h-[2px] bg-surface-container-high mx-4 mb-6"></div>
+<div class="flex flex-col items-center gap-2 opacity-40">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">2</div>
+<span class="text-sm font-bold headline-font">Schedule</span>
+</div>
+<div class="flex-1 h-[2px] bg-surface-container-high mx-4 mb-6"></div>
+<div class="flex flex-col items-center gap-2 opacity-40">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">3</div>
+<span class="text-sm font-bold headline-font">Protection</span>
+</div>
+<div class="flex-1 h-[2px] bg-surface-container-high mx-4 mb-6"></div>
+<div class="flex flex-col items-center gap-2 opacity-40">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">4</div>
+<span class="text-sm font-bold headline-font">Review &amp; Pay</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Main Content Area -->
+<div class="lg:col-span-8">
+<header class="mb-12">
+<h1 class="text-5xl font-black headline-font tracking-tighter mb-4">Select Your Vehicle</h1>
+<p class="text-on-surface-variant max-w-xl">Choose from our curated fleet of precision-engineered performance vehicles and luxury saloons.</p>
+</header>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-3 mb-10">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-medium text-sm transition-all">All</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all">Sedan</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all">SUV</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all">Sport</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all">Prestige</button>
+</div>
+<!-- Vehicle Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Vehicle Card 1 (Selected) -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 border-2 border-primary transition-all cursor-pointer">
+<div class="absolute top-4 right-4 bg-primary text-white p-1 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="mb-6">
+<span class="text-xs font-bold tracking-widest text-primary uppercase headline-font">Performance Sedan</span>
+<h3 class="text-2xl font-bold headline-font mt-1">OBSIDIAN E-GT</h3>
+</div>
+<img alt="Obsidian E-GT" class="w-full h-48 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" data-alt="Sleek modern electric luxury sedan in metallic silver parked in a high-tech studio with dramatic rim lighting and reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg0tcmE_awCircyDtNjSb9p8G9_AEDiqupvqDDQgMUBrSXtqu9tlQ2x8b5n7GG6YGfvTuRl76fR8p-ehIACOtQhsz1qGO9l8ENp3XxULbj_1nSGTuD1i--dtAEl_8-paJv5AIifX-EoajehH3AVfJH9el_feKdAW0Hginx4r2YDReFLJYk4N63yGK0HMmYskYs79QreIU8LYpaHjWWG8I9C_g41E3kUgt_GjWillOOj8UCH4RE_REtZp4Kw4d_f2FRmMQJmaE1uNU"/>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">bolt</span>
+<span class="text-sm">750 HP</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">settings_input_component</span>
+<span class="text-sm">All-Wheel Drive</span>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-2xl font-bold headline-font">$450</span>
+<span class="text-xs text-on-surface-variant uppercase tracking-wider">Per Day</span>
+</div>
+</div>
+</div>
+<!-- Vehicle Card 2 -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 border-2 border-transparent hover:bg-surface-container transition-all cursor-pointer">
+<div class="mb-6">
+<span class="text-xs font-bold tracking-widest text-on-surface-variant uppercase headline-font">Grand Tourer</span>
+<h3 class="text-2xl font-bold headline-font mt-1">OBSIDIAN VANTAGE</h3>
+</div>
+<img alt="Obsidian Vantage" class="w-full h-48 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" data-alt="Matte black luxury sports car with aggressive styling captured from a low angle at dusk in a minimalist concrete environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhMNo5a7u_8XHtWjg95yoEnL1lTDoerF4LSMUzrkx9kqqNMxgUSJWJ2wlKXrF4AxPMB_hhjgTcYv_G0riq_htvCLBSxj9oJ2Wd2xNnfIxKxs68Aoc1MhxCx8Dug0UQcvRe6S0BU5kcRKGpCupCSupNSXMbvCmNsvUATPUHRuR_ALVyVSq_RFB2WmEUdq0c2RacKW4t1NQ6U8bKnOS2c9CTW2WztmE9BEW9eZPyvQdDgLgCB7yyuNvK7TlU1odYkTkwRTypJYuWzl8"/>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">speed</span>
+<span class="text-sm">0-60 in 3.2s</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">chair</span>
+<span class="text-sm">4 Seats</span>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-2xl font-bold headline-font">$620</span>
+<span class="text-xs text-on-surface-variant uppercase tracking-wider">Per Day</span>
+</div>
+</div>
+</div>
+<!-- Vehicle Card 3 -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 border-2 border-transparent hover:bg-surface-container transition-all cursor-pointer">
+<div class="mb-6">
+<span class="text-xs font-bold tracking-widest text-on-surface-variant uppercase headline-font">Luxury SUV</span>
+<h3 class="text-2xl font-bold headline-font mt-1">OBSIDIAN TERRA</h3>
+</div>
+<img alt="Obsidian Terra" class="w-full h-48 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" data-alt="Large premium white SUV parked in front of a modern glass architectural building with soft morning light and lens flare" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyu056RffVLXmtLLVjz0_hTLQ6cH84znY5eI-gqv3Di7JHYDC-2wHuVjAypRh4gJvm6qYbIUeildaUypCVjsnfz9LN8SDrIO0bsQTFmxSNBSSI9s5co9XURPE0jFMEYq8L6I1h4WERAtPTmCLhyRickWAjHezAHnMCpZYxAsA4AwJqUecBNlpgaiSe1X18a83lnI28TQoFS0aHsAqyxP_23Q26oR__8qTo8-NdsE28Ehzc3rjGVCZDrRlj-eKOTtd4qEVcPzYUG1w"/>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">mountain_flag</span>
+<span class="text-sm">Adaptive Air</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm">7 Passengers</span>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-2xl font-bold headline-font">$380</span>
+<span class="text-xs text-on-surface-variant uppercase tracking-wider">Per Day</span>
+</div>
+</div>
+</div>
+<!-- Vehicle Card 4 -->
+<div class="group relative bg-surface-container-low rounded-xl p-8 border-2 border-transparent hover:bg-surface-container transition-all cursor-pointer">
+<div class="mb-6">
+<span class="text-xs font-bold tracking-widest text-on-surface-variant uppercase headline-font">Electric Prestige</span>
+<h3 class="text-2xl font-bold headline-font mt-1">OBSIDIAN ZENITH</h3>
+</div>
+<img alt="Obsidian Zenith" class="w-full h-48 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" data-alt="Dark sapphire blue executive electric sedan on a coastal road at sunset with golden light hitting the curves of the bodywork" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB15HWohbamp8HB5YFPgaSskbek7xZpkEu-aA2wAo3piL1dVnHFpIgnQpiWIDSPja5YO5RmN810ZO2_wWhB_yrFIRQNBzsP4AyORZEJ0jOVsub88gVKXXD-CkyTskXOoAP6bQKvqub4YMzcGgQ1qGAyJosR6i3EDeQtSiz3iTaMdGWWAR_Ft-bCq6bs8ndAxtD-Fz5OIuDdDzzS9gzIgyL6NAvKIKJ90pEyG4qbyG--2mFlFMIaQS01xJoqjrmmIBHRIdfnyM0AG-A"/>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+<span class="text-sm">Autopilot IV</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">battery_charging_full</span>
+<span class="text-sm">520mi Range</span>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-2xl font-bold headline-font">$540</span>
+<span class="text-xs text-on-surface-variant uppercase tracking-wider">Per Day</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Panel -->
+<div class="lg:col-span-4">
+<div class="sticky top-32">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0px_20px_40px_rgba(25,28,34,0.06)] border border-outline-variant/10">
+<h2 class="text-xl font-bold headline-font mb-8">Reservation Summary</h2>
+<div class="space-y-6">
+<div class="flex items-start gap-4 pb-6 border-b border-surface-container">
+<div class="w-20 h-12 bg-surface-container-low rounded-md overflow-hidden flex items-center justify-center">
+<img alt="E-GT thumb" class="w-full object-contain" data-alt="Close up thumbnail of a silver luxury electric sedan silhouette against a clean white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKe-k_4jlQPk_d-A2N0FmnYbMK0troxDTCxtnZyaxageSrk6l7uzEInpcX7nhdwSWwztLM4_OftY3quPkriLbTc4B7N_Z54U68U0CmWTktGZqXmkyvtafvIfCjmqGQivl1sC8u3t1lOXi1FKrpOx49RJsWV8zQC_VuHc7ymGF3M9M2vAPJyDLzzcB1i7yOIzQwpOerU1wl7W8KY1qS6BbINgKH91eXcZPQ95_DYieodT9DqQgVzIMNtnaDp8wy_QMnD3pKr-EHEzw"/>
+</div>
+<div>
+<span class="text-xs text-on-surface-variant uppercase tracking-widest font-bold headline-font">Selected Vehicle</span>
+<p class="font-bold headline-font">OBSIDIAN E-GT</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Daily Rate</span>
+<span class="font-medium">$450.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Estimated Duration</span>
+<span class="font-medium">3 Days</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Taxes &amp; Fees</span>
+<span class="font-medium">$135.00</span>
+</div>
+</div>
+<div class="pt-6 border-t border-surface-container">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-xs text-on-surface-variant uppercase tracking-widest font-bold headline-font">Estimated Total</span>
+<p class="text-3xl font-black headline-font">$1,485.00</p>
+</div>
+<span class="text-xs text-on-surface-variant mb-1">USD</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-md font-bold headline-font hover:bg-tertiary-container transition-all flex items-center justify-center gap-2">
+                                    Continue to Schedule
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<p class="text-[10px] text-center text-on-surface-variant mt-4 leading-relaxed uppercase tracking-widest font-medium">
+                                    Final pricing and availability confirmed in next step
+                                </p>
+</div>
+</div>
+</div>
+<!-- Helper Glass Card -->
+<div class="mt-6 bg-white/40 backdrop-blur-xl rounded-xl p-6 border border-white/20">
+<div class="flex gap-4">
+<div class="bg-primary/10 text-primary w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<h4 class="font-bold headline-font text-sm">Obsidian Assurance</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Every vehicle in our fleet undergoes a 150-point technical inspection before delivery.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-100 dark:bg-slate-900 w-full pt-20 pb-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="text-xl font-black text-slate-900 dark:text-white headline-font mb-6">OBSIDIAN</div>
+<p class="text-slate-500 text-sm font-['Inter'] leading-relaxed">Defining the future of premium mobility through precision engineering and minimalist luxury.</p>
+</div>
+<div>
+<h4 class="font-bold headline-font mb-6 text-slate-900 dark:text-white">Fleet Guide</h4>
+<ul class="space-y-4 text-sm font-['Inter'] text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Electric Saloons</a></li>
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Performance SUVs</a></li>
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Special Editions</a></li>
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Lease Program</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold headline-font mb-6 text-slate-900 dark:text-white">Support</h4>
+<ul class="space-y-4 text-sm font-['Inter'] text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Help Center</a></li>
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Booking Terms</a></li>
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Insurance</a></li>
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold headline-font mb-6 text-slate-900 dark:text-white">Legal</h4>
+<ul class="space-y-4 text-sm font-['Inter'] text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Terms of Service</a></li>
+<li><a class="hover:text-blue-600 transition-all underline-offset-4 hover:underline" href="#">Cookie Settings</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-20 px-12 max-w-7xl mx-auto border-t border-slate-200 dark:border-slate-800 pt-8 flex justify-between items-center">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-['Inter'] tracking-wide">© 2024 OBSIDIAN Automotive Group. All rights reserved.</span>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">language</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">share</span>
+</div>
+</div>
+</footer>
+</body></html>

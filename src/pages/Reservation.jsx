@@ -7,7 +7,7 @@ import Footer from '../components/Footer/Footer'
 import styles from './Reservation.module.css'
 
 export default function Reservation() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { user } = useAuth()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
@@ -95,6 +95,7 @@ export default function Reservation() {
         reservationId: reservation.id,
         vehicleName: selectedVehicle.name,
         totalPrice: total,
+        lang: i18n.language,
       }),
     })
 
@@ -124,20 +125,22 @@ export default function Reservation() {
             <div className={styles.row}>
               <div className={styles.field}>
                 <label className={styles.label}>{t('reservation.fields.vehicle')}</label>
-                <select
-                  name="vehicle_id"
-                  value={formData.vehicle_id}
-                  onChange={handleChange}
-                  required
-                  className={styles.input}
-                >
-                  <option value="">{t('reservation.fields.vehiclePlaceholder')}</option>
-                  {vehicles.map((v) => (
-                    <option key={v.id} value={v.id}>
-                      {v.name} — {v.price_per_day}€{t('fleet.perDay')}
-                    </option>
-                  ))}
-                </select>
+                <div className="select-wrapper">
+                  <select
+                    name="vehicle_id"
+                    value={formData.vehicle_id}
+                    onChange={handleChange}
+                    required
+                    className={styles.input}
+                  >
+                    <option value="">{t('reservation.fields.vehiclePlaceholder')}</option>
+                    {vehicles.map((v) => (
+                      <option key={v.id} value={v.id}>
+                        {v.name} — {v.price_per_day}€{t('fleet.perDay')}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 
