@@ -84,6 +84,24 @@
   "hasAccount": "Déjà un compte ?",
   "signupLink": "S'inscrire",
   "loginLink": "Se connecter"
+},
+"dashboard": {
+  "title": "Mon espace",
+  "welcome": "Bonjour,",
+  "subtitle": "Retrouvez ici toutes vos réservations.",
+  "newReservation": "Nouvelle réservation",
+  "reservations": "Mes réservations",
+  "empty": "Vous n'avez pas encore de réservation.",
+  "emptyCta": "Réserver un véhicule",
+  "pickup": "Prise en charge",
+  "return": "Retour",
+  "location": "Lieu",
+  "total": "Total",
+  "status": {
+    "pending": "En attente",
+    "paid": "Confirmée",
+    "cancelled": "Annulée"
+  }
 }
 
 }
