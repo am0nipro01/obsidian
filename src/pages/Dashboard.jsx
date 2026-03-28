@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabase'
+import { getRoutes } from '../utils/routes'
 import Footer from '../components/Footer/Footer'
 import styles from './Dashboard.module.css'
-import { useLocation } from 'react-router-dom'
 
 
 export default function Dashboard() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { user, profile } = useAuth()
   const [reservations, setReservations] = useState([])
   const [loading, setLoading] = useState(true)
   const location = useLocation()
+  const routes = getRoutes(i18n.language)
   const paymentSuccess = new URLSearchParams(location.search).get('payment') === 'success'
 
 
@@ -61,7 +62,7 @@ export default function Dashboard() {
             {t('dashboard.welcome')} {profile?.full_name?.split(' ')[0] || '—'}
           </h1>
           <p className={styles.subtitle}>{t('dashboard.subtitle')}</p>
-          <Link to="/reservation" className={styles.newBtn}>
+          <Link to={routes.booking} className={styles.newBtn}>
             + {t('dashboard.newReservation')}
           </Link>
         </div>
@@ -75,7 +76,7 @@ export default function Dashboard() {
           ) : reservations.length === 0 ? (
             <div className={styles.emptyState}>
               <p>{t('dashboard.empty')}</p>
-              <Link to="/reservation" className={styles.emptyCta}>
+              <Link to={routes.booking} className={styles.emptyCta}>
                 {t('dashboard.emptyCta')}
               </Link>
             </div>

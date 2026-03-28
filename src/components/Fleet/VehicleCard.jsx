@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { getRoutes } from '../../utils/routes'
 import styles from './VehicleCard.module.css'
 
 export default function VehicleCard({ vehicle }) {
   const { t, i18n } = useTranslation()
   const isFr = i18n.language.startsWith('fr')
+  const routes = getRoutes(i18n.language)
 
   // Unit conversion
   const rangeDisplay = isFr
@@ -57,7 +59,7 @@ export default function VehicleCard({ vehicle }) {
             <span className={styles.unit}>{perDay}</span>
           </p>
           <Link
-            to={`/reservation?vehicle=${encodeURIComponent(vehicle.name)}`}
+            to={`${routes.booking}?vehicle=${encodeURIComponent(vehicle.name)}`}
             className={styles.cta}
           >
             {t('fleet.cta')} →

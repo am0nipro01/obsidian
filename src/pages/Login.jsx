@@ -1,12 +1,16 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
+import { getRoutes } from '../utils/routes'
 import styles from './Login.module.css'
 
 export default function Login() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
+  const location = useLocation()
+  const routes = getRoutes(i18n.language)
+  const from = location.state?.from || routes.dashboard
   const [mode, setMode] = useState('login') // 'login' | 'signup'
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -29,14 +33,14 @@ export default function Login() {
         options: { data: { full_name: form.full_name } },
       })
       if (error) { setError(error.message); setLoading(false); return }
-      navigate('/dashboard')
+      navigate(from, { replace: true })
     } else {
       const { error } = await supabase.auth.signInWithPassword({
         email: form.email,
         password: form.password,
       })
       if (error) { setError(error.message); setLoading(false); return }
-      navigate('/dashboard')
+      navigate(from, { replace: true })
     }
     setLoading(false)
   }

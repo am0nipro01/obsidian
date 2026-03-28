@@ -1,6 +1,8 @@
+/* ─── Section ─────────────────────────────────────────────────────────────── */
+
 .section {
   padding: var(--section-padding);
-  background-color: var(--surface-low);
+  background-color: #f8f9fc;
 }
 
 .container {
@@ -9,62 +11,175 @@
   padding: 0 2rem;
 }
 
-.header { margin-bottom: 4rem; }
+/* ─── Two-column layout ───────────────────────────────────────────────────── */
 
-.steps {
+.layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ─── Left: image column ──────────────────────────────────────────────────── */
+
+.imageCol {
   position: relative;
 }
 
-.step {
-  padding: 0 3rem 0 0;
+.imageWrapper {
   position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
 }
-.step:last-child { padding-right: 0; }
 
-.number {
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  font-family: var(--font-display);
-  font-size: 3.5rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  color: var(--outline-variant);
-  line-height: 1;
-  margin-bottom: 1.5rem;
-  transition: color var(--transition-slow);
 }
-.step:hover .number { color: var(--primary); }
 
-.step:not(:last-child)::after {
-  content: '';
+/* Floating card overlaid at bottom-left */
+.floatingCard {
   position: absolute;
-  top: 1.75rem;
-  right: 0;
-  width: 2.5rem;
-  height: 1px;
-  background: linear-gradient(to right, var(--outline-variant), transparent);
+  bottom: 28px;
+  left: -28px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 22px 26px;
+  max-width: 300px;
+  box-shadow: 0 8px 32px rgba(25, 28, 34, 0.12);
 }
 
-.stepTitle {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
+.floatingTitle {
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--on-surface);
-  margin-bottom: 0.75rem;
+  color: #111;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
 }
 
-.stepDesc {
-  font-size: 0.88rem;
-  color: var(--on-surface-muted);
-  line-height: 1.8;
-  max-width: 280px;
+.floatingDesc {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
 }
 
-@media (max-width: 768px) {
-  .steps { grid-template-columns: 1fr; gap: 2.5rem; }
-  .step:not(:last-child)::after { display: none; }
-  .step { padding: 0 0 0 1.5rem; border-left: 2px solid var(--outline-variant); }
+/* ─── Right: content column ───────────────────────────────────────────────── */
+
+.contentCol {
+  padding-left: 12px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #2563eb;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111;
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+
+.desc {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.75;
+  margin: 0 0 40px;
+  max-width: 480px;
+}
+
+/* ─── Feature list ────────────────────────────────────────────────────────── */
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.featureIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.featureText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.featureTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.featureDesc {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 4 / 3;
+    max-height: 420px;
+  }
+
+  .floatingCard {
+    left: 16px;
+    bottom: 16px;
+    max-width: calc(100% - 32px);
+  }
+
+  .contentCol {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .floatingCard {
+    position: static;
+    margin-top: 16px;
+    max-width: 100%;
+  }
+
+  .imageWrapper {
+    border-radius: 14px;
+    overflow: visible;
+  }
 }

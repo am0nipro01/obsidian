@@ -1,18 +1,29 @@
 {
   "nav": {
     "fleet": "Fleet",
-    "howItWorks": "How It Works",
+    "howItWorks": "Experience",
+    "ourStory": "Our Story",
     "reservation": "Reservation",
     "dashboard": "My space",
     "login": "Login",
     "signOut": "Sign out"
   },
   "hero": {
-    "tagline": "AUTOMOTIVE EXCELLENCE",
-    "titleLine1": "The Luxury of",
-    "titleLine2": "Obsidian",
-    "subtitle": "Experience the pinnacle of high-end mobility. Our curated fleet of obsidian-class vehicles offers unparalleled performance and presence on the road.",
-    "cta": "Book Now"
+    "cta": "Book Now",
+    "slides": [
+      {
+        "tagline": "PREMIUM FLEET",
+        "titleLine1": "Drive",
+        "titleLine2": "the exception.",
+        "subtitle": "Hand-picked vehicles for those who refuse the ordinary."
+      },
+      {
+        "tagline": "AUTOMOTIVE EXCELLENCE",
+        "titleLine1": "The road",
+        "titleLine2": "is yours.",
+        "subtitle": "Choose from our fleet of exceptional vehicles and take the wheel of an unforgettable driving experience."
+      }
+    ]
   },
   "fleet": {
     "title": "Our Fleet",
@@ -25,23 +36,21 @@
     "spec060": "0-60 MPH"
   },
   "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "Simple. Fast. Premium.",
-    "steps": [
+    "titleLine1": "Drive",
+    "titleLine2": "differently.",
+    "desc": "At Obsidian, premium rental isn't a simple service — it's an experience designed for those who demand excellence at every step.",
+    "features": [
       {
-        "number": "01",
-        "title": "Choose",
-        "description": "Browse our fleet and select the vehicle that suits your needs."
+        "title": "Curated Fleet",
+        "description": "Every vehicle is handpicked for its performance, comfort, and distinctive character."
       },
       {
-        "number": "02",
-        "title": "Reserve",
-        "description": "Fill in your details and confirm your reservation in minutes."
+        "title": "Concierge Delivery",
+        "description": "Your vehicle is delivered to your location — hotel, home or office — by a dedicated agent."
       },
       {
-        "number": "03",
-        "title": "Drive",
-        "description": "Pick up your vehicle and enjoy a premium driving experience."
+        "title": "Always Available",
+        "description": "Our concierge team is on call around the clock to attend to your every need."
       }
     ]
   },
@@ -133,6 +142,11 @@
     "dates": "Dates", "location": "Location",
     "total": "Total", "status": "Status"
   }
+},
+"routes": {
+  "booking": "booking",
+  "bookingConfirmed": "booking-confirmed",
+  "paymentCancelled": "payment-cancelled"
 },
 "bookingConfirmed": {
   "title": "BOOKING CONFIRMED.",

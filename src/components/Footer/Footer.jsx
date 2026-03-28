@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { getRoutes } from '../../utils/routes'
 import styles from './Footer.module.css'
 
 export default function Footer() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const routes = getRoutes(i18n.language)
 
   return (
     <footer className={`${styles.footer} reveal`}>
@@ -19,8 +21,8 @@ export default function Footer() {
             <h4 className={styles.colTitle}>{t('footer.nav')}</h4>
             <ul className={styles.colList}>
               <li><a href="/#fleet">{t('nav.fleet')}</a></li>
-              <li><a href="/#how-it-works">{t('nav.howItWorks')}</a></li>
-              <li><Link to="/reservation">{t('nav.reservation')}</Link></li>
+              <li><a href="/#experience">{t('nav.howItWorks')}</a></li>
+              <li><Link to={routes.booking}>{t('nav.reservation')}</Link></li>
             </ul>
           </div>
 

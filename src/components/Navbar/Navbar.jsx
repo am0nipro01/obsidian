@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../context/AuthContext'
 import { scrollToSection } from '../../utils/scrollToSection'
+import { getRoutes, getRouteKeyByPath, ROUTES } from '../../utils/routes'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
@@ -13,8 +14,16 @@ export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
 
+  const routes = getRoutes(i18n.language)
   const isHome = location.pathname === '/'
   const isTransparent = isHome && !scrolled && !menuOpen
+
+  // Hide navbar on post-booking pages (both language variants)
+  const hiddenPaths = [
+    ROUTES.en.bookingConfirmed, ROUTES.fr.bookingConfirmed,
+    ROUTES.en.paymentCancelled, ROUTES.fr.paymentCancelled,
+  ]
+  if (hiddenPaths.includes(location.pathname)) return null
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -25,7 +34,17 @@ export default function Navbar() {
   useEffect(() => { setMenuOpen(false) }, [location])
 
   const toggleLang = () => {
-    i18n.changeLanguage(i18n.language.startsWith('fr') ? 'en' : 'fr')
+    const newLang = i18n.language.startsWith('fr') ? 'en' : 'fr'
+    const newRoutes = getRoutes(newLang)
+
+    // Find which route key matches the current path and navigate to its translation
+    const key = getRouteKeyByPath(location.pathname)
+
+    i18n.changeLanguage(newLang)
+
+    if (key && newRoutes[key] && key !== 'home') {
+      navigate(newRoutes[key])
+    }
   }
 
   const handleLogoClick = (e) => {
@@ -58,15 +77,18 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="/#how-it-works" onClick={(e) => handleNavLink(e, 'how-it-works')}>
+            <a href="/#experience" onClick={(e) => handleNavLink(e, 'experience')}>
               {t('nav.howItWorks')}
             </a>
           </li>
+          <li>
+            <Link to={routes.ourStory}>{t('nav.ourStory')}</Link>
+          </li>
           {user && (
-            <li><Link to="/dashboard">{t('nav.dashboard')}</Link></li>
+            <li><Link to={routes.dashboard}>{t('nav.dashboard')}</Link></li>
           )}
           {user && profile?.role === 'admin' && (
-            <li><Link to="/admin" className={styles.adminLink}>Admin</Link></li>
+            <li><Link to={routes.admin} className={styles.adminLink}>Admin</Link></li>
           )}
         </ul>
 
@@ -78,7 +100,7 @@ export default function Navbar() {
           {user ? (
             <button className={styles.authBtn} onClick={signOut}>{t('nav.signOut')}</button>
           ) : (
-            <Link to="/login" className={styles.authBtn}>{t('nav.login')}</Link>
+            <Link to={routes.login} className={styles.authBtn}>{t('nav.login')}</Link>
           )}
           <button className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             <span /><span /><span />
@@ -95,15 +117,18 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="/#how-it-works" onClick={(e) => handleNavLink(e, 'how-it-works')}>
+            <a href="/#experience" onClick={(e) => handleNavLink(e, 'experience')}>
               {t('nav.howItWorks')}
             </a>
           </li>
+          <li>
+            <Link to={routes.ourStory} onClick={() => setMenuOpen(false)}>{t('nav.ourStory')}</Link>
+          </li>
           {user && (
-            <li><Link to="/dashboard" onClick={() => setMenuOpen(false)}>{t('nav.dashboard')}</Link></li>
+            <li><Link to={routes.dashboard} onClick={() => setMenuOpen(false)}>{t('nav.dashboard')}</Link></li>
           )}
           {user && profile?.role === 'admin' && (
-            <li><Link to="/admin" onClick={() => setMenuOpen(false)}>Admin</Link></li>
+            <li><Link to={routes.admin} onClick={() => setMenuOpen(false)}>Admin</Link></li>
           )}
           {user ? (
             <li>
@@ -112,7 +137,7 @@ export default function Navbar() {
               </button>
             </li>
           ) : (
-            <li><Link to="/login" onClick={() => setMenuOpen(false)}>{t('nav.login')}</Link></li>
+            <li><Link to={routes.login} onClick={() => setMenuOpen(false)}>{t('nav.login')}</Link></li>
           )}
         </ul>
       </div>

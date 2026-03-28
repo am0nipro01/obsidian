@@ -1,18 +1,29 @@
 {
   "nav": {
     "fleet": "Flotte",
-    "howItWorks": "Comment ça marche",
+    "howItWorks": "Expérience",
+    "ourStory": "Notre Histoire",
     "reservation": "Réservation",
     "dashboard": "Mon espace",
     "login": "Connexion",
     "signOut": "Déconnexion"
   },
   "hero": {
-    "tagline": "EXCELLENCE AUTOMOBILE",
-    "titleLine1": "Le luxe à l'état",
-    "titleLine2": "Obsidian",
-    "subtitle": "Découvrez l'excellence de la mobilité premium. Notre flotte de véhicules d'exception vous offre une présence incomparable sur la route.",
-    "cta": "Réservez ici"
+    "cta": "Réservez ici",
+    "slides": [
+      {
+        "tagline": "FLEET PREMIUM",
+        "titleLine1": "Conduisez",
+        "titleLine2": "l'exception.",
+        "subtitle": "Des véhicules d'exception sélectionnés pour ceux qui refusent l'ordinaire."
+      },
+      {
+        "tagline": "EXCELLENCE AUTOMOBILE",
+        "titleLine1": "La route",
+        "titleLine2": "vous appartient.",
+        "subtitle": "Choisissez parmi notre flotte de véhicules d'exception et prenez les commandes d'une expérience de conduite inoubliable."
+      }
+    ]
   },
   "fleet": {
     "title": "Notre Flotte",
@@ -25,23 +36,21 @@
     "spec060": "0-100 km/h"
   },
   "howItWorks": {
-    "title": "Comment ça fonctionne",
-    "subtitle": "Simple. Rapide. Premium.",
-    "steps": [
+    "titleLine1": "Conduisez",
+    "titleLine2": "autrement.",
+    "desc": "Chez Obsidian, la location premium n'est pas un simple service — c'est une expérience conçue pour ceux qui exigent l'excellence à chaque étape.",
+    "features": [
       {
-        "number": "01",
-        "title": "Choisissez",
-        "description": "Parcourez notre flotte et sélectionnez le véhicule qui correspond à vos besoins."
+        "title": "Flotte d'exception",
+        "description": "Chaque véhicule est soigneusement sélectionné pour ses performances, son confort et son caractère unique."
       },
       {
-        "number": "02",
-        "title": "Réservez",
-        "description": "Renseignez vos informations et confirmez votre réservation en quelques minutes."
+        "title": "Livraison Concierge",
+        "description": "Votre véhicule vous est livré là où vous êtes — hôtel, domicile ou bureau — par un agent dédié."
       },
       {
-        "number": "03",
-        "title": "Prenez le volant",
-        "description": "Récupérez votre véhicule et vivez une expérience de conduite d'exception."
+        "title": "Disponibilité permanente",
+        "description": "Notre équipe est disponible à toute heure pour répondre à vos besoins et garantir votre sérénité."
       }
     ]
   },
@@ -133,6 +142,11 @@
     "dates": "Dates", "location": "Lieu",
     "total": "Total", "status": "Statut"
   }
+},
+"routes": {
+  "booking": "reservation",
+  "bookingConfirmed": "reservation-confirmee",
+  "paymentCancelled": "paiement-annule"
 },
 "bookingConfirmed": {
   "title": "RÉSERVATION CONFIRMÉE.",

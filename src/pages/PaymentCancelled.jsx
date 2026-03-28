@@ -1,17 +1,33 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { getRoutes } from '../utils/routes'
 import Footer from '../components/Footer/Footer'
 import styles from './PaymentCancelled.module.css'
 
 export default function PaymentCancelled() {
+  const { i18n } = useTranslation()
+  const isFr = i18n.language.startsWith('fr')
+  const routes = getRoutes(i18n.language)
+
   return (
     <div className={styles.page}>
       <div className={styles.content}>
         <div className={styles.icon}>✕</div>
-        <h1 className={styles.title}>Payment Cancelled.</h1>
-        <p className={styles.subtitle}>Your reservation has been saved. Complete payment anytime from your dashboard.</p>
+        <h1 className={styles.title}>
+          {isFr ? 'Paiement annulé.' : 'Payment Cancelled.'}
+        </h1>
+        <p className={styles.subtitle}>
+          {isFr
+            ? 'Votre réservation a été sauvegardée. Finalisez le paiement à tout moment depuis votre espace.'
+            : 'Your reservation has been saved. Complete payment anytime from your space.'}
+        </p>
         <div className={styles.actions}>
-          <Link to="/dashboard" className={styles.btnPrimary}>Complete Payment</Link>
-          <Link to="/#fleet" className={styles.btnGhost}>Back to Fleet</Link>
+          <Link to={routes.dashboard} className={styles.btnPrimary}>
+            {isFr ? 'Finaliser le paiement' : 'Complete Payment'}
+          </Link>
+          <Link to="/#fleet" className={styles.btnGhost}>
+            {isFr ? 'Retour à la flotte' : 'Back to Fleet'}
+          </Link>
         </div>
       </div>
       <Footer />

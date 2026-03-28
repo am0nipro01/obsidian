@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { getRoutes } from '../../utils/routes'
 import styles from './FeaturedCard.module.css'
 
 export default function FeaturedCard({ vehicle }) {
   const { t, i18n } = useTranslation()
   const isFr = i18n.language.startsWith('fr')
+  const routes = getRoutes(i18n.language)
 
   const rangeDisplay = isFr
     ? `${Math.round(vehicle.range * 1.60934)} km`
@@ -49,7 +51,7 @@ export default function FeaturedCard({ vehicle }) {
         </div>
 
         <Link
-          to={`/reservation?vehicle=${encodeURIComponent(vehicle.name)}`}
+          to={`${routes.booking}?vehicle=${encodeURIComponent(vehicle.name)}`}
           className={styles.cta}
         >
           {t('fleet.cta')} ↗

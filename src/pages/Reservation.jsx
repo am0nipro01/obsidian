@@ -152,6 +152,8 @@ export default function Reservation() {
                   name="pickup"
                   value={formData.pickup}
                   onChange={handleChange}
+                  onClick={(e) => e.target.showPicker?.()}
+                  onFocus={(e) => e.target.showPicker?.()}
                   required
                   min={new Date().toISOString().split('T')[0]}
                   className={styles.input}
@@ -164,6 +166,8 @@ export default function Reservation() {
                   name="return"
                   value={formData.return}
                   onChange={handleChange}
+                  onClick={(e) => e.target.showPicker?.()}
+                  onFocus={(e) => e.target.showPicker?.()}
                   required
                   min={formData.pickup || new Date().toISOString().split('T')[0]}
                   className={styles.input}

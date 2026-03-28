@@ -1,0 +1,1205 @@
+/* ─── Page ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: #fff;
+  padding-top: 72px;
+}
+
+/* ─── Stepper ──────────────────────────────────────────────────────────────── */
+
+.stepper {
+  background: #fff;
+  border-bottom: 1px solid #e8eaed;
+}
+
+/* Aligns stepper content with the navbar (max-width: 1280px, padding: 0 2rem) */
+.stepperContent {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.stepperBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0 12px;
+}
+
+.stepCount {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2563eb;
+}
+
+.stepSection {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+}
+
+.progressTrack {
+  height: 2px;
+  background: #e5e7eb;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: #2563eb;
+  transition: width 0.4s ease;
+}
+
+.stepRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 14px 0 16px;
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepDone {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.stepActive {
+  border-color: #2563eb;
+  background: #2563eb;
+}
+
+.stepLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+.stepLabelActive {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* ─── Layout ───────────────────────────────────────────────────────────────── */
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 48px;
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 44px 24px 72px;
+  align-items: start;
+}
+
+/* ─── Left Panel (transparent, no card) ────────────────────────────────────── */
+
+.left {
+  min-width: 0;
+}
+
+/* ─── Step Content ─────────────────────────────────────────────────────────── */
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepTitle {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 10px;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.stepSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 28px;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+/* ─── Form Box (gray container for inputs) ─────────────────────────────────── */
+
+.formBox {
+  background: #f4f6f9;
+  border-radius: 14px;
+  padding: 20px 24px 24px;
+  margin-bottom: 28px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.formRow:last-child {
+  margin-bottom: 0;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+}
+
+/* ─── Autocomplete ─────────────────────────────────────────────────────────── */
+
+.autocomplete {
+  position: relative;
+}
+
+.inputIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0 12px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.inputIcon:focus-within {
+  border-color: #2563eb;
+}
+
+.inputIcon svg {
+  flex-shrink: 0;
+}
+
+.iconInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  font-size: 14px;
+  color: #111;
+  background: transparent;
+  font-family: inherit;
+}
+
+.iconInput::placeholder {
+  color: #c4c9d4;
+}
+
+.iconInput:disabled {
+  color: #c4c9d4;
+}
+
+.sameReturnText {
+  font-size: 14px;
+  color: #9ca3af;
+  padding: 12px 0;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.suggestionItem:hover {
+  background: #f3f4f6;
+}
+
+.suggestionPin {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Date Input ───────────────────────────────────────────────────────────── */
+
+.dateInput {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #111;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  background: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.dateInput:focus {
+  border-color: #2563eb;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* ─── Delivery Options ─────────────────────────────────────────────────────── */
+
+.deliverySection {
+  margin-bottom: 8px;
+}
+
+.deliveryTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 14px;
+}
+
+.deliveryOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  background: #fff;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.deliveryOption:hover {
+  border-color: #93c5fd;
+}
+
+.deliveryOptionActive {
+  border-color: #2563eb;
+  background: #f0f6ff;
+}
+
+.deliveryInfo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Icon container — blue (doorstep) */
+.deliveryIconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Icon container — gray (hub) */
+.deliveryIconWrapperGray {
+  background: #f3f4f6;
+}
+
+.deliveryName {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+
+.deliveryDesc {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.deliveryRight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.deliveryPrice {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.deliveryFree {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+
+.radio {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ─── Protection Plans ─────────────────────────────────────────────────────── */
+
+.protectionList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.protectionOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  cursor: pointer;
+  background: #fff;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.protectionOption:hover {
+  border-color: #93c5fd;
+}
+
+.protectionOptionActive {
+  border-color: #2563eb;
+  background: #f0f6ff;
+}
+
+.planInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.planName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+}
+
+.planDesc {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.planPrice {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  white-space: nowrap;
+}
+
+/* ─── Category Filter Chips ─────────────────────────────────────────────────── */
+
+.categoryFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.categoryChip {
+  padding: 7px 18px;
+  border-radius: 999px;
+  border: 1.5px solid #e5e7eb;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.categoryChip:hover {
+  border-color: #93c5fd;
+  color: #2563eb;
+}
+
+.categoryChipActive {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+/* ─── Vehicle Selection Fleet Grid ─────────────────────────────────────────── */
+
+.fleetGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.fleetCard {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  background: #f4f6f9;
+  cursor: pointer;
+  text-align: left;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.fleetCard:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+}
+
+.fleetCardSelected {
+  border-color: #2563eb;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.16);
+}
+
+/* Top row: category + checkmark */
+.fleetCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+}
+
+.fleetCardCategory {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2563eb;
+}
+
+.fleetCardCheckmark {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Name */
+.fleetCardName {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #111;
+  margin: 0;
+  line-height: 1.15;
+}
+
+/* Image */
+.fleetCardImageBox {
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #e5e7eb;
+}
+
+.fleetCardImageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.fleetCard:hover .fleetCardImageBox img {
+  transform: scale(1.03);
+}
+
+/* Bottom: specs + price */
+.fleetCardBottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.fleetCardSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fleetCardSpec {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.fleetCardSpecEmpty {
+  font-size: 12px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Price */
+.fleetCardPriceBox {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.fleetCardAmount {
+  display: block;
+  font-size: 30px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.fleetCardUnit {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* ─── Review Grid ──────────────────────────────────────────────────────────── */
+
+.reviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.reviewBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+}
+
+.reviewBlock:nth-child(even) { border-right: none; }
+.reviewBlock:nth-last-child(-n+2) { border-bottom: none; }
+
+.reviewBlockLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+}
+
+.reviewBlockValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* ─── Step Actions ─────────────────────────────────────────────────────────── */
+
+.stepActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.nextBtn {
+  flex: 1;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.nextBtn:hover:not(:disabled) { background: #1d4ed8; }
+.nextBtn:disabled { background: #d1d5db; color: #9ca3af; cursor: not-allowed; }
+
+.submitBtn {
+  flex: 1;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.submitBtn:hover:not(:disabled) { background: #1d4ed8; }
+.submitBtn:disabled { background: #d1d5db; color: #9ca3af; cursor: not-allowed; }
+
+.backBtn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+
+.backBtn:hover { color: #111; }
+
+.errorMsg {
+  color: #ef4444;
+  font-size: 13px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+}
+
+/* ─── Right Panel: Car Summary Card ───────────────────────────────────────── */
+
+.right {
+  position: sticky;
+  top: 96px;
+}
+
+.summaryCard {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e8eaed;
+}
+
+.summaryImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 190px;
+}
+
+.summaryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.summaryBadges {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.badgeCategory {
+  background: #2563eb;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* ─── Summary body (all content below the image) ──────────────────────────── */
+
+.summaryBody {
+  padding: 0;
+}
+
+/* ─── Vehicle name + subtitle — properly padded and aligned with pricing ───── */
+
+.summaryInfo {
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.summaryName {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: 0.04em;
+  margin: 0 0 4px;
+}
+
+.summarySubtitle {
+  font-size: 10px;
+  color: #9ca3af;
+  letter-spacing: 0.06em;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ─── Pricing rows ─────────────────────────────────────────────────────────── */
+
+.pricingTable {
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pricingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.priceAccent {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.totalSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.totalLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+}
+
+.totalAmount {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
+}
+
+.refundNote {
+  padding: 8px 20px 14px;
+  font-size: 11px;
+  color: #9ca3af;
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.previewRoute {
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.previewMap {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(135deg, #e8eaed 0%, #d1d5db 100%);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.previewBtn {
+  width: 100%;
+  padding: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #6b7280;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.previewBtn:hover { background: #f3f4f6; }
+
+.assistance {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 20px;
+}
+
+.assistanceIcon {
+  font-size: 18px;
+  margin-top: 1px;
+}
+
+.assistanceTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  margin: 0 0 2px;
+}
+
+.assistanceLink {
+  font-size: 12px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.assistanceLink:hover { text-decoration: underline; }
+
+.summaryEmpty {
+  padding: 60px 20px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* ─── Step 4: Review — Vehicle Card ───────────────────────────────────────── */
+
+.reviewVehicleCard {
+  background: #f4f6f9;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.reviewVehicleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 20px 16px;
+}
+
+.reviewVehicleBadge {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+.reviewVehicleName {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 4px;
+}
+
+.reviewVehicleSubtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.reviewVehicleYear {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  background: #e5e7eb;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.reviewVehicleImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Step 4: Review — Info Grid 2×2 ──────────────────────────────────────── */
+
+.reviewInfoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.reviewInfoCard {
+  background: #f4f6f9;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.reviewInfoTop {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.reviewInfoLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2563eb;
+}
+
+.reviewInfoTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+
+.reviewInfoDesc {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ─── Step 4: Summary of Charges (Right Panel) ─────────────────────────────── */
+
+.chargesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chargesCard {
+  background: #fff;
+  border: 1px solid #e8eaed;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.chargesTitle {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 20px;
+}
+
+.chargesTable {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.chargesRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #374151;
+}
+
+.chargesRow span:last-child {
+  font-weight: 600;
+  color: #111;
+}
+
+.chargesDivider {
+  height: 1px;
+  background: #e5e7eb;
+  margin-bottom: 16px;
+}
+
+.chargesTotal {
+  margin-bottom: 20px;
+}
+
+.chargesTotalLabel {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.chargesTotalRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.chargesTotalAmount {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111;
+}
+
+.chargesTotalCurrency {
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.proceedBtn {
+  width: 100%;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+  margin-bottom: 12px;
+}
+
+.proceedBtn:hover:not(:disabled) { background: #1d4ed8; }
+.proceedBtn:disabled { background: #d1d5db; color: #9ca3af; cursor: not-allowed; }
+
+.secureNotice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.secureDesc {
+  font-size: 11px;
+  color: #9ca3af;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cancellationPolicy {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #eff6ff;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.cancellationPolicy p {
+  font-size: 12px;
+  color: #374151;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.chargesMap {
+  border-radius: 14px;
+  height: 160px;
+  overflow: hidden;
+  background: #e8eaed;
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+}
+
+/* When empty (no location yet) */
+.chargesMap:has(span) {
+  background: linear-gradient(135deg, #e8eaed 0%, #d1d5db 100%);
+}
+
+/* When iframe is loaded — no padding, just the map */
+.chargesMap:has(iframe) {
+  padding: 0;
+}
+
+.chargesMapPin {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 28px; }
+  .right { order: -1; position: static; }
+}
+
+@media (max-width: 640px) {
+  .formRow { grid-template-columns: 1fr; }
+  .fleetGrid { grid-template-columns: 1fr; }
+  .categoryFilters { gap: 6px; }
+  .fleetCardName { font-size: 15px; }
+  .fleetCardAmount { font-size: 24px; }
+  .reviewGrid { grid-template-columns: 1fr; }
+  .reviewBlock { border-right: none; }
+  .stepRow { gap: 20px; }
+  .stepLabel { font-size: 8px; }
+  .stepperBar { padding: 12px 16px 10px; }
+  .layout { padding: 28px 16px 60px; }
+  .stepTitle { font-size: 26px; }
+}
