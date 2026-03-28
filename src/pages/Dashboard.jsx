@@ -53,7 +53,7 @@ export default function Dashboard() {
         <div className={styles.header}>
         {paymentSuccess && (
             <div className={styles.successBanner}>
-                Paiement confirmé — votre réservation est en cours de traitement.
+                {t('dashboard.paymentSuccess')}
             </div>
         )}
 

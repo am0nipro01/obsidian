@@ -3,6 +3,11 @@
     "fleet": "Flotte",
     "howItWorks": "Expérience",
     "ourStory": "Notre Histoire",
+    "testimonials": "Témoignages",
+    "newsletter": "Newsletter",
+    "mySpace": "Mon Espace",
+    "profile": "Mon Profil",
+    "settings": "Paramètres",
     "reservation": "Réservation",
     "dashboard": "Mon espace",
     "login": "Connexion",
@@ -73,7 +78,15 @@
     "success": "Votre demande a bien été envoyée. Nous vous recontactons sous 2h.",
     "required": "Champs obligatoires"
   },
-  "footer": {
+  "newsletter": {
+  "title": "Restez inspirés.",
+  "subtitle": "Rejoignez notre newsletter et soyez les premiers à découvrir nos nouveautés, offres exclusives et inspirations.",
+  "placeholder": "Votre adresse email",
+  "button": "S'abonner",
+  "privacy": "En vous abonnant, vous acceptez notre Politique de confidentialité et consentez à recevoir nos actualités.",
+  "success": "Merci ! Vous êtes désormais abonné à la newsletter OBSIDIAN."
+},
+"footer": {
     "tagline": "La location premium réinventée.",
     "nav": "Navigation",
     "contact": "Contact",
@@ -110,6 +123,7 @@
   "return": "Retour",
   "location": "Lieu",
   "total": "Total",
+  "paymentSuccess": "Paiement confirmé — votre réservation est en cours de traitement.",
   "status": {
     "pending": "En attente",
     "paid": "Confirmée",
@@ -140,7 +154,8 @@
   "reservations": {
     "client": "Client", "vehicle": "Véhicule",
     "dates": "Dates", "location": "Lieu",
-    "total": "Total", "status": "Statut"
+    "total": "Total", "status": "Statut",
+    "confirmDelete": "Supprimer cette réservation ?"
   }
 },
 "routes": {

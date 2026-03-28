@@ -1,0 +1,185 @@
+.wrapper {
+  background: #f4f6f9;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 8px;
+}
+
+/* ── Navigation ── */
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.navBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.navBtn:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+/* ── Two-month layout ── */
+.months {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 640px) {
+  .months {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Month ── */
+.month {}
+
+.monthHeader {
+  margin-bottom: 10px;
+}
+
+.monthLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+}
+
+/* ── Weekday headers ── */
+.weekRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+}
+
+.weekDay {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  padding: 4px 0;
+  letter-spacing: 0.04em;
+}
+
+/* ── Day grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+/* ── Day button base ── */
+.day {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, color 0.12s;
+  background: transparent;
+  color: #374151;
+  padding: 0;
+  min-width: 0;
+}
+
+.day:not(:disabled):hover {
+  background: #e5e7eb;
+}
+
+/* ── Day states ── */
+.day_default {
+  background: transparent;
+  color: #374151;
+}
+
+.day_past {
+  color: #d1d5db;
+  cursor: default;
+}
+
+.day_booked {
+  background: #fee2e2;
+  color: #fca5a5;
+  cursor: default;
+  text-decoration: line-through;
+}
+
+.day_start,
+.day_end {
+  background: #1d4ed8;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.day_start {
+  border-radius: 8px 0 0 8px;
+}
+
+.day_end {
+  border-radius: 0 8px 8px 0;
+}
+
+.day_start.day_end {
+  border-radius: 8px;
+}
+
+.day_inrange {
+  background: rgba(29, 78, 216, 0.1);
+  color: #1d4ed8;
+  border-radius: 0;
+}
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legendAvailable {
+  background: #e5e7eb;
+}
+
+.legendBooked {
+  background: #fca5a5;
+}
+
+.legendSelected {
+  background: #1d4ed8;
+}

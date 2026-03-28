@@ -29,21 +29,30 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function fetchProfile(userId) {
-    const { data } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single()
-    setProfile(data)
-    setLoading(false)
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single()
+      if (!error) setProfile(data)
+    } catch {
+      // profile fetch failed — user remains authenticated without profile
+    } finally {
+      setLoading(false)
+    }
   }
 
   async function signOut() {
     await supabase.auth.signOut()
   }
 
+  async function refreshProfile() {
+    if (user) await fetchProfile(user.id)
+  }
+
   return (
-    <AuthContext.Provider value={{ user, profile, loading, signOut }}>
+    <AuthContext.Provider value={{ user, profile, loading, signOut, refreshProfile }}>
       {children}
     </AuthContext.Provider>
   )

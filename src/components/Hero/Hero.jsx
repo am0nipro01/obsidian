@@ -37,8 +37,9 @@ export default function Hero() {
     return () => clearInterval(timer)
   }, [])
 
-  const slides = t('hero.slides', { returnObjects: true })
-  const slide = slides[current] || slides[0]
+  const rawSlides = t('hero.slides', { returnObjects: true })
+  const slides = Array.isArray(rawSlides) ? rawSlides : []
+  const slide = slides[current] ?? slides[0] ?? {}
 
   return (
     <section className={`${styles.hero} ${current === 1 ? styles.heroTop : ''}`}>

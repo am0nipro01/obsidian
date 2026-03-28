@@ -3,6 +3,11 @@
     "fleet": "Fleet",
     "howItWorks": "Experience",
     "ourStory": "Our Story",
+    "testimonials": "Testimonials",
+    "newsletter": "Newsletter",
+    "mySpace": "My Space",
+    "profile": "My Profile",
+    "settings": "Settings",
     "reservation": "Reservation",
     "dashboard": "My space",
     "login": "Login",
@@ -73,7 +78,15 @@
     "success": "Your request has been sent. We will get back to you within 2 hours.",
     "required": "Required fields"
   },
-  "footer": {
+  "newsletter": {
+  "title": "Stay Inspired.",
+  "subtitle": "Join our newsletter and be the first to discover new updates, exclusive offers, and inspiration.",
+  "placeholder": "Enter your email address",
+  "button": "Subscribe",
+  "privacy": "By subscribing, you agree to our Privacy Policy and consent to receive updates from OBSIDIAN.",
+  "success": "Thank you! You are now subscribed to the OBSIDIAN newsletter."
+},
+"footer": {
     "tagline": "Premium car rental redefined.",
     "nav": "Navigation",
     "contact": "Contact",
@@ -110,6 +123,7 @@
   "return": "Return",
   "location": "Location",
   "total": "Total",
+  "paymentSuccess": "Payment confirmed — your reservation is being processed.",
   "status": {
     "pending": "Pending",
     "paid": "Confirmed",
@@ -140,7 +154,8 @@
   "reservations": {
     "client": "Client", "vehicle": "Vehicle",
     "dates": "Dates", "location": "Location",
-    "total": "Total", "status": "Status"
+    "total": "Total", "status": "Status",
+    "confirmDelete": "Delete this reservation?"
   }
 },
 "routes": {

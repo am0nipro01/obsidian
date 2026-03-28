@@ -4,10 +4,15 @@ import { scrollToSection } from '../utils/scrollToSection'
 import Hero from '../components/Hero/Hero'
 import Fleet from '../components/Fleet/Fleet'
 import HowItWorks from '../components/HowItWorks/HowItWorks'
+import Testimonials from '../components/Testimonials/Testimonials'
+import Newsletter from '../components/Newsletter/Newsletter'
 import Footer from '../components/Footer/Footer'
 
 export default function Home() {
   const location = useLocation()
+
+  // Always start at the top on fresh load / refresh
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   // Scroll to section when arriving from another page with state
   useEffect(() => {
@@ -52,6 +57,8 @@ export default function Home() {
       <Hero />
       <Fleet />
       <HowItWorks />
+      <Testimonials />
+      <Newsletter />
       <Footer />
     </main>
   )

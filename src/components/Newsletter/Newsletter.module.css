@@ -1,0 +1,150 @@
+/* ─── Section wrapper ─── */
+.section {
+  padding: 5rem 2rem 6rem;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* ─── Section header (mirrors Testimonials) ─── */
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--primary);
+  font-family: var(--font-body);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--on-surface);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--on-surface-muted);
+  max-width: 440px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Dark card ─── */
+.card {
+  width: 100%;
+  max-width: 780px;
+  background: var(--on-surface);
+  border-radius: 24px;
+  padding: 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/* ─── Form ─── */
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+.input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input:focus {
+  border-color: var(--primary-container);
+}
+
+/* ─── Button ─── */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ─── Privacy note ─── */
+.privacy {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  max-width: 420px;
+  line-height: 1.6;
+}
+
+/* ─── Success message ─── */
+.successMsg {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.5rem 0;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 540px) {
+  .card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .input,
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

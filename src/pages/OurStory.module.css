@@ -1,9 +1,13 @@
 /* ─── Page ───────────────────────────────────────────────────────────────── */
 
 .page {
-  padding-top: 72px; /* navbar height */
   background: #fff;
+  display: flex;
+  flex-direction: column;
 }
+
+/* Force footer visible (bypass scroll-reveal IntersectionObserver) */
+.page :global(.reveal) { opacity: 1 !important; transform: none !important; }
 
 .container {
   max-width: var(--max-width);
@@ -16,6 +20,7 @@
 .hero {
   background: #f4f6f9;
   overflow: hidden;
+  padding-top: 72px; /* navbar height — moved here so gray fills all the way up */
 }
 
 .heroInner {
@@ -79,7 +84,7 @@
   width: 100%;
   max-height: 480px;
   object-fit: cover;
-  border-radius: 16px 0 0 16px;
+  border-radius: 16px;
   display: block;
 }
 

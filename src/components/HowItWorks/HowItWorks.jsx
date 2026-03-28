@@ -55,6 +55,15 @@ export default function HowItWorks() {
                 className={styles.image}
               />
             </div>
+            {/* Card outside imageWrapper so shadow + overflow are visible */}
+            <div className={styles.floatingCard}>
+              <p className={styles.floatingTitle}>Mercedes-Benz S‑Class</p>
+              <p className={styles.floatingDesc}>
+                {isFr
+                  ? 'V8 biturbo · Livraison en 60 min · Confort absolu.'
+                  : 'Twin-turbo V8 · Delivered in 60 min · Absolute comfort.'}
+              </p>
+            </div>
           </div>
 
           {/* ── Right: tag + title + description + features ── */}

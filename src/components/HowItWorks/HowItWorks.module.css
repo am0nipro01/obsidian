@@ -40,18 +40,20 @@
   display: block;
 }
 
-/* Floating card overlaid at bottom-left */
+/* Floating card — overflows bottom-right of imageWrapper */
 .floatingCard {
   position: absolute;
-  bottom: 28px;
-  left: -28px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  bottom: -36px;
+  right: -28px;
+  background: rgba(240, 241, 246, 0.70);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
-  padding: 22px 26px;
+  padding: 2rem 1.5rem;
   max-width: 300px;
-  box-shadow: 0 8px 32px rgba(25, 28, 34, 0.12);
+  box-shadow:
+    0 16px 48px rgba(25, 28, 34, 0.22),
+    0 4px 12px rgba(25, 28, 34, 0.10);
 }
 
 .floatingTitle {
@@ -63,7 +65,7 @@
 }
 
 .floatingDesc {
-  font-size: 13px;
+  font-size: 14px;
   color: #6b7280;
   line-height: 1.6;
   margin: 0;
@@ -161,9 +163,10 @@
   }
 
   .floatingCard {
-    left: 16px;
-    bottom: 16px;
-    max-width: calc(100% - 32px);
+    right: -12px;
+    bottom: -28px;
+    max-width: calc(65% - 12px);
+    padding: 1.25rem 1.25rem;
   }
 
   .contentCol {
@@ -173,13 +176,13 @@
 
 @media (max-width: 480px) {
   .floatingCard {
-    position: static;
-    margin-top: 16px;
-    max-width: 100%;
+    right: -8px;
+    bottom: -24px;
+    max-width: calc(72% - 8px);
+    padding: 1rem 1.1rem;
   }
 
-  .imageWrapper {
-    border-radius: 14px;
-    overflow: visible;
+  .floatingDesc {
+    font-size: 13px;
   }
 }

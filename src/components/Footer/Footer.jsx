@@ -8,7 +8,7 @@ export default function Footer() {
   const routes = getRoutes(i18n.language)
 
   return (
-    <footer className={`${styles.footer} reveal`}>
+    <footer className={styles.footer}>
       <div className={styles.container}>
 
         <div className={styles.top}>
@@ -22,6 +22,8 @@ export default function Footer() {
             <ul className={styles.colList}>
               <li><a href="/#fleet">{t('nav.fleet')}</a></li>
               <li><a href="/#experience">{t('nav.howItWorks')}</a></li>
+              <li><a href="/#testimonials">{t('nav.testimonials')}</a></li>
+              <li><a href="/#newsletter">{t('nav.newsletter')}</a></li>
               <li><Link to={routes.booking}>{t('nav.reservation')}</Link></li>
             </ul>
           </div>

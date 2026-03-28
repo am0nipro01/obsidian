@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
 import { getRoutes } from '../utils/routes'
 import Footer from '../components/Footer/Footer'
 import styles from './OurStory.module.css'
@@ -130,12 +130,65 @@ const STATS_EN = [
   { value: '12', label: 'GLOBAL INNOVATION HUBS' },
 ]
 
+/* ─── Animated counter ───────────────────────────────────────────────────────── */
+
+function StatCounter({ value, label }) {
+  const ref = useRef(null)
+  const [displayed, setDisplayed] = useState('0')
+
+  // Parse numeric value and suffix (e.g. "1.2M" → { num: 1.2, suffix: "M", decimals: 1 })
+  const match = value.match(/^([\d.]+)(.*)$/)
+  const num = match ? parseFloat(match[1]) : 0
+  const suffix = match ? match[2] : ''
+  const decimals = (match?.[1] ?? '').includes('.') ? 1 : 0
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        observer.disconnect()
+
+        const duration = 1800
+        const start = performance.now()
+
+        const tick = (now) => {
+          const elapsed = now - start
+          const progress = Math.min(elapsed / duration, 1)
+          // ease-out cubic
+          const eased = 1 - Math.pow(1 - progress, 3)
+          const current = eased * num
+          setDisplayed(current.toFixed(decimals) + suffix)
+          if (progress < 1) requestAnimationFrame(tick)
+        }
+
+        requestAnimationFrame(tick)
+      },
+      { threshold: 0.4 }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [num, suffix, decimals])
+
+  return (
+    <div ref={ref} className={styles.stat}>
+      <span className={styles.statValue}>{displayed}</span>
+      <span className={styles.statLabel}>{label}</span>
+    </div>
+  )
+}
+
 /* ─── Component ─────────────────────────────────────────────────────────────── */
 
 export default function OurStory() {
   const { t, i18n } = useTranslation()
   const isFr = i18n.language.startsWith('fr')
   const routes = getRoutes(i18n.language)
+
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   const pillars = isFr ? PILLARS_FR : PILLARS_EN
   const timeline = isFr ? TIMELINE_FR : TIMELINE_EN
@@ -158,13 +211,13 @@ export default function OurStory() {
                 ? "L'intersection de la haute performance et de la responsabilité planétaire."
                 : 'The intersection of high-performance engineering and planetary responsibility.'}
             </p>
-            <a href="/#fleet" className={styles.heroCta}>
-              {isFr ? 'Découvrir la Flotte' : 'Discover the Fleet'}
+            <a href="#mission" className={styles.heroCta}>
+              {isFr ? 'Notre engagement →' : 'Explore Our Mission →'}
             </a>
           </div>
           <div className={styles.heroImageCol}>
             <img
-              src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=80"
+              src="https://images.unsplash.com/photo-1518674660708-0e2c0473e68e?auto=format&fit=crop&w=900&q=80"
               alt={isFr ? 'Véhicule Obsidian' : 'Obsidian Vehicle'}
               className={styles.heroImage}
             />
@@ -173,7 +226,7 @@ export default function OurStory() {
       </section>
 
       {/* ── Mission ── */}
-      <section className={styles.mission}>
+      <section id="mission" className={styles.mission}>
         <div className={styles.container}>
           <span className={styles.tag}>{isFr ? 'NOTRE MISSION' : 'OUR MISSION'}</span>
           <p className={styles.missionText}>
@@ -246,10 +299,7 @@ export default function OurStory() {
             <div className={styles.impactRight}>
               <div className={styles.statsGrid}>
                 {stats.map((s) => (
-                  <div key={s.label} className={styles.stat}>
-                    <span className={styles.statValue}>{s.value}</span>
-                    <span className={styles.statLabel}>{s.label}</span>
-                  </div>
+                  <StatCounter key={s.label} value={s.value} label={s.label} />
                 ))}
               </div>
             </div>

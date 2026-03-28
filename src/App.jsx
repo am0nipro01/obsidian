@@ -11,6 +11,8 @@ import Admin from './pages/Admin'
 import BookingConfirmed from './pages/BookingConfirmed'
 import PaymentCancelled from './pages/PaymentCancelled'
 import OurStory from './pages/OurStory'
+import Profile from './pages/Profile'
+import NotFound from './pages/NotFound'
 import { ROUTES } from './utils/routes'
 
 const R = ROUTES
@@ -26,6 +28,10 @@ function App() {
         {/* Our Story — EN: /our-story  FR: /notre-histoire */}
         <Route path={R.en.ourStory} element={<OurStory />} />
         <Route path={R.fr.ourStory} element={<OurStory />} />
+
+        {/* Profile — EN: /my-profile  FR: /mon-profil */}
+        <Route path={R.en.profile} element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path={R.fr.profile} element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 
         {/* Login — EN: /login  FR: /connexion */}
         <Route path={R.en.login} element={<Login />} />
@@ -64,6 +70,9 @@ function App() {
         <Route path={R.en.admin} element={
           <ProtectedRoute adminOnly={true}><Admin /></ProtectedRoute>
         } />
+
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )

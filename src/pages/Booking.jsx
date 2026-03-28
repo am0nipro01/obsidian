@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import Footer from '../components/Footer/Footer'
+import AvailabilityCalendar from '../components/AvailabilityCalendar/AvailabilityCalendar'
 import styles from './Booking.module.css'
 
 // ─── Constants ─────────────────────────────────────────────────────────────────
@@ -579,6 +580,7 @@ function StepVehicle({ vehicles, bookingData, setBookingData, onNext, isFr }) {
 function StepSchedule({ bookingData, setBookingData, onNext, onBack, isFr }) {
   const today = new Date().toISOString().split('T')[0]
   const upd = (key, val) => setBookingData((prev) => ({ ...prev, [key]: val }))
+  const handleDateChange = (pickup, returnD) => setBookingData((prev) => ({ ...prev, pickupDate: pickup, returnDate: returnD }))
   const canContinue =
     bookingData.pickupLocation.trim() &&
     bookingData.pickupDate &&
@@ -618,14 +620,37 @@ function StepSchedule({ bookingData, setBookingData, onNext, onBack, isFr }) {
         </div>
         <div className={styles.formRow}>
           <div className={styles.formField}>
-            <label className={styles.formLabel}>{isFr ? 'DATE DE DÉPART' : 'DATE'}</label>
-            <DateInput value={bookingData.pickupDate} onChange={(e) => upd('pickupDate', e.target.value)} min={today} className={styles.dateInput} />
+            <label className={styles.formLabel}>{isFr ? 'DATE DE DÉPART' : 'PICK-UP DATE'}</label>
+            <input
+              type="text"
+              readOnly
+              value={bookingData.pickupDate
+                ? new Date(bookingData.pickupDate + 'T00:00:00').toLocaleDateString(isFr ? 'fr-FR' : 'en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+                : ''}
+              placeholder={isFr ? 'Sélectionnez ci-dessous' : 'Select below'}
+              className={styles.dateInput}
+            />
           </div>
           <div className={styles.formField}>
             <label className={styles.formLabel}>{isFr ? 'DATE DE RETOUR' : 'RETURN DATE'}</label>
-            <DateInput value={bookingData.returnDate} onChange={(e) => upd('returnDate', e.target.value)} min={bookingData.pickupDate || today} className={styles.dateInput} />
+            <input
+              type="text"
+              readOnly
+              value={bookingData.returnDate
+                ? new Date(bookingData.returnDate + 'T00:00:00').toLocaleDateString(isFr ? 'fr-FR' : 'en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+                : ''}
+              placeholder={isFr ? 'Sélectionnez ci-dessous' : 'Select below'}
+              className={styles.dateInput}
+            />
           </div>
         </div>
+        <AvailabilityCalendar
+          vehicleId={bookingData.vehicle_id}
+          pickupDate={bookingData.pickupDate}
+          returnDate={bookingData.returnDate}
+          onChange={handleDateChange}
+          isFr={isFr}
+        />
       </div>
 
       <div className={styles.deliverySection}>

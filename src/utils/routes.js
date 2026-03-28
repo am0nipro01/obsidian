@@ -28,6 +28,7 @@ function build(t) {
     login: '/' + slugify(t.nav.login),
     dashboard: '/' + slugify(t.nav.dashboard),
     ourStory: '/' + slugify(t.nav.ourStory),
+    profile: '/' + slugify(t.nav.profile),
     booking: '/' + t.routes.booking,
     bookingConfirmed: '/' + t.routes.bookingConfirmed,
     paymentCancelled: '/' + t.routes.paymentCancelled,
