@@ -104,7 +104,7 @@ export default function Home() {
     <main>
       <SEO
         lang={isFr ? 'fr' : 'en'}
-        title={isFr ? 'Location de véhicules premium' : 'Premium Vehicle Rental'}
+
         description={isFr
           ? 'OBSIDIAN — Location de véhicules de luxe en France. Berlines, SUV et sportives avec service conciergerie. Réservation en ligne, livraison à domicile.'
           : 'OBSIDIAN — Premium luxury car rental in France. Sedans, SUVs and sports cars with concierge service. Book online, doorstep delivery.'}
