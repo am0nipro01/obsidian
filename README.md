@@ -1,16 +1,126 @@
-# React + Vite
+<p align="center">
+  <img src="public/og-image.png" alt="OBSIDIAN — Location de véhicules premium" width="100%" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">OBSIDIAN</h1>
 
-Currently, two official plugins are available:
+<p align="center">
+  Application web full-stack de location de véhicules premium.<br/>
+  Tunnel de réservation complet, paiement Stripe, dashboard admin, bilingue FR/EN.
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Supabase-2-3ECF8E?style=flat-square&logo=supabase&logoColor=white" />
+  <img src="https://img.shields.io/badge/Stripe-21-635BFF?style=flat-square&logo=stripe&logoColor=white" />
+  <img src="https://img.shields.io/badge/Netlify-Functions-00C7B7?style=flat-square&logo=netlify&logoColor=white" />
+</p>
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack technique
 
-## Expanding the ESLint configuration
+| Couche | Technologie |
+|--------|-------------|
+| Frontend | React 19, React Router v7, CSS Modules |
+| Internationalisation | react-i18next — FR / EN |
+| Backend / BDD | Supabase (Auth, PostgreSQL, RLS) |
+| Paiement | Stripe Checkout + Webhook |
+| Serverless | Netlify Functions |
+| Email | Resend |
+| SEO | react-helmet-async, sitemap, robots.txt, JSON-LD |
+| Charts | Recharts |
+| Build | Vite 6 |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Fonctionnalités
+
+- **Tunnel de réservation** en 4 étapes — choix véhicule, planning, protection, récapitulatif
+- **Calendrier de disponibilité** en temps réel (dates bloquées selon réservations payées)
+- **Paiement Stripe** avec session Checkout et webhook de confirmation
+- **Email de confirmation** automatique après paiement (Resend)
+- **Dashboard admin** — gestion véhicules + réservations, stats, graphique d'activité
+- **Espace client** — historique des réservations, profil
+- **Synchronisation véhicules** — trigger Supabase + webhook Stripe
+- **Authentification** complète (Supabase Auth) avec rôles `admin` / `user`
+- **RLS Supabase** — protection des données côté serveur
+- **SEO 2026** — meta dynamiques, OG, hreflang, JSON-LD, robots, sitemap
+- **Bilingue** FR / EN avec routes traduites (`/reservation` ↔ `/booking`)
+
+---
+
+## Installation
+
+```bash
+# Cloner le repo
+git clone https://github.com/ton-username/obsidian.git
+cd obsidian
+
+# Installer les dépendances
+npm install
+
+# Lancer en local (avec Netlify Functions)
+npx netlify dev
+```
+
+> Le site sera disponible sur `http://localhost:8888`
+
+---
+
+## Structure du projet
+
+```
+obsidian/
+├── netlify/
+│   └── functions/
+│       ├── create-checkout.js    # Création session Stripe
+│       └── stripe-webhook.js     # Webhook paiement + email
+├── public/
+│   ├── favicon.svg
+│   ├── og-image.png
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── components/
+│   │   ├── AvailabilityCalendar/
+│   │   ├── AdminChart/
+│   │   ├── Hero/
+│   │   ├── Fleet/
+│   │   ├── HowItWorks/
+│   │   ├── Testimonials/
+│   │   ├── Newsletter/
+│   │   ├── Navbar/
+│   │   ├── Footer/
+│   │   ├── SEO/
+│   │   └── ProtectedRoute.jsx
+│   ├── context/
+│   │   └── AuthContext.jsx
+│   ├── i18n/
+│   │   ├── fr.json
+│   │   └── en.json
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Booking.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Admin.jsx
+│   │   ├── Profile.jsx
+│   │   ├── OurStory.jsx
+│   │   ├── Login.jsx
+│   │   ├── BookingConfirmed.jsx
+│   │   ├── PaymentCancelled.jsx
+│   │   └── NotFound.jsx
+│   └── utils/
+│       └── routes.js
+└── supabase/
+    └── migrations/
+        ├── rls_policies.sql
+        └── vehicle_availability_trigger.sql
+```
+
+---
+
+<p align="center">
+  Fait avec React, Supabase & Stripe
+</p>
