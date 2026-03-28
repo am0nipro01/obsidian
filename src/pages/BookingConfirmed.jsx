@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 import { getRoutes } from '../utils/routes'
 import Footer from '../components/Footer/Footer'
+import SEO from '../components/SEO/SEO'
 import styles from './BookingConfirmed.module.css'
 
 export default function BookingConfirmed() {
@@ -47,6 +48,7 @@ export default function BookingConfirmed() {
 
   return (
     <div className={styles.page}>
+      <SEO lang={isFr ? 'fr' : 'en'} title={isFr ? 'Réservation confirmée' : 'Booking Confirmed'} noindex={true} />
 
       {/* ── Top section: icon + title + subtitle ── */}
       <div className={styles.topSection}>

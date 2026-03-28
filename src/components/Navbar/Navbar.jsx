@@ -153,6 +153,11 @@ export default function Navbar() {
                     <Link to={routes.profile} className={styles.dropdownItem} onClick={() => setDropdownOpen(false)}>
                       {t('nav.profile')}
                     </Link>
+                    {profile?.role !== 'admin' && (
+                      <Link to={routes.dashboard} className={styles.dropdownItem} onClick={() => setDropdownOpen(false)}>
+                        {t('nav.dashboard')}
+                      </Link>
+                    )}
                     <div className={styles.dropdownDivider} />
                     <button
                       className={`${styles.dropdownItem} ${styles.dropdownSignOut}`}

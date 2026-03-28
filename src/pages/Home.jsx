@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { scrollToSection } from '../utils/scrollToSection'
 import Hero from '../components/Hero/Hero'
 import Fleet from '../components/Fleet/Fleet'
@@ -7,8 +8,55 @@ import HowItWorks from '../components/HowItWorks/HowItWorks'
 import Testimonials from '../components/Testimonials/Testimonials'
 import Newsletter from '../components/Newsletter/Newsletter'
 import Footer from '../components/Footer/Footer'
+import SEO from '../components/SEO/SEO'
+
+const SCHEMA_FR = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'OBSIDIAN',
+    url: 'https://obsidian-rental.com',
+    logo: 'https://obsidian-rental.com/og-image.jpg',
+    description: 'Location de véhicules premium en France — berlines de luxe, SUV et sportives avec service conciergerie.',
+    sameAs: [],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'RentACarBusiness',
+    name: 'OBSIDIAN',
+    url: 'https://obsidian-rental.com',
+    description: 'Location de véhicules premium en France.',
+    priceRange: '€€€',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Credit Card',
+  },
+]
+
+const SCHEMA_EN = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'OBSIDIAN',
+    url: 'https://obsidian-rental.com',
+    logo: 'https://obsidian-rental.com/og-image.jpg',
+    description: 'Premium vehicle rental in France — luxury sedans, SUVs and sports cars with concierge service.',
+    sameAs: [],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'RentACarBusiness',
+    name: 'OBSIDIAN',
+    url: 'https://obsidian-rental.com',
+    description: 'Premium vehicle rental in France.',
+    priceRange: '€€€',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Credit Card',
+  },
+]
 
 export default function Home() {
+  const { i18n } = useTranslation()
+  const isFr = i18n.language.startsWith('fr')
   const location = useLocation()
 
   // Always start at the top on fresh load / refresh
@@ -54,6 +102,16 @@ export default function Home() {
 
   return (
     <main>
+      <SEO
+        lang={isFr ? 'fr' : 'en'}
+        title={isFr ? 'Location de véhicules premium' : 'Premium Vehicle Rental'}
+        description={isFr
+          ? 'OBSIDIAN — Location de véhicules de luxe en France. Berlines, SUV et sportives avec service conciergerie. Réservation en ligne, livraison à domicile.'
+          : 'OBSIDIAN — Premium luxury car rental in France. Sedans, SUVs and sports cars with concierge service. Book online, doorstep delivery.'}
+        canonical="/"
+        altLang={{ fr: '/', en: '/' }}
+        schema={isFr ? SCHEMA_FR : SCHEMA_EN}
+      />
       <Hero />
       <Fleet />
       <HowItWorks />

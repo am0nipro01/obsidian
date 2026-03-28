@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { getRoutes } from '../utils/routes'
 import Footer from '../components/Footer/Footer'
+import SEO from '../components/SEO/SEO'
 import styles from './PaymentCancelled.module.css'
 
 export default function PaymentCancelled() {
@@ -11,6 +12,7 @@ export default function PaymentCancelled() {
 
   return (
     <div className={styles.page}>
+      <SEO lang={isFr ? 'fr' : 'en'} title={isFr ? 'Paiement annulé' : 'Payment Cancelled'} noindex={true} />
       <div className={styles.content}>
         <div className={styles.icon}>✕</div>
         <h1 className={styles.title}>

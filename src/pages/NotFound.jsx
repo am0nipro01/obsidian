@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Footer from '../components/Footer/Footer'
+import SEO from '../components/SEO/SEO'
 import styles from './NotFound.module.css'
 
 export default function NotFound() {
@@ -9,6 +10,11 @@ export default function NotFound() {
 
   return (
     <div className={styles.page}>
+      <SEO
+        lang={isFr ? 'fr' : 'en'}
+        title={isFr ? 'Page introuvable' : 'Page not found'}
+        noindex={true}
+      />
       <div className={styles.content}>
         <p className={styles.code}>404</p>
         <h1 className={styles.title}>

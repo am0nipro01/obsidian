@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0C0C0C"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1c50c7"/>
+      <stop offset="100%" style="stop-color:#3e6ae1"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C8A96E"/>
+      <stop offset="100%" style="stop-color:#e0c080"/>
+    </linearGradient>
+    <clipPath id="clip">
+      <rect width="1200" height="630" rx="0"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="210" x2="1200" y2="210" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="0" y1="420" x2="1200" y2="420" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="630" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="800" y1="0" x2="800" y2="630" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+  <!-- Right side abstract car silhouette shape -->
+  <ellipse cx="950" cy="380" rx="320" ry="200" fill="rgba(62,106,225,0.06)"/>
+  <ellipse cx="950" cy="360" rx="240" ry="150" fill="rgba(62,106,225,0.05)"/>
+
+  <!-- Left accent bar -->
+  <rect x="80" y="180" width="4" height="270" fill="url(#gold)" rx="2"/>
+
+  <!-- Gold tag line -->
+  <text x="104" y="210" font-family="'Space Grotesk', 'Helvetica Neue', sans-serif" font-size="13" font-weight="700" letter-spacing="4" fill="#C8A96E">FLEET PREMIUM</text>
+
+  <!-- Main title -->
+  <text x="100" y="305" font-family="'Space Grotesk', 'Helvetica Neue', sans-serif" font-size="78" font-weight="800" letter-spacing="-3" fill="#ffffff">OBSIDIAN</text>
+
+  <!-- Blue underline accent -->
+  <rect x="100" y="322" width="340" height="5" fill="url(#accent)" rx="2.5"/>
+
+  <!-- Subtitle -->
+  <text x="100" y="385" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="24" font-weight="300" fill="rgba(255,255,255,0.65)" letter-spacing="0.5">Location de véhicules premium</text>
+
+  <!-- Description line 1 -->
+  <text x="100" y="435" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.38)">Berlines · SUV · Sportives · Service conciergerie</text>
+
+  <!-- CTA pill -->
+  <rect x="100" y="470" width="220" height="52" rx="8" fill="url(#accent)"/>
+  <text x="210" y="502" font-family="'Space Grotesk', 'Helvetica Neue', sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="1">Réserver maintenant</text>
+
+  <!-- Domain -->
+  <text x="100" y="580" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="14" font-weight="400" fill="rgba(255,255,255,0.25)" letter-spacing="1">obsidian-rental.com</text>
+
+  <!-- Right side: abstract rings -->
+  <circle cx="980" cy="315" r="180" stroke="rgba(62,106,225,0.12)" stroke-width="1" fill="none"/>
+  <circle cx="980" cy="315" r="130" stroke="rgba(62,106,225,0.09)" stroke-width="1" fill="none"/>
+  <circle cx="980" cy="315" r="80"  stroke="rgba(200,169,110,0.15)" stroke-width="1.5" fill="none"/>
+  <circle cx="980" cy="315" r="35"  fill="rgba(62,106,225,0.15)"/>
+
+  <!-- Center dot -->
+  <circle cx="980" cy="315" r="8" fill="url(#gold)"/>
+
+  <!-- Small decorative dots -->
+  <circle cx="850" cy="180" r="3" fill="rgba(200,169,110,0.4)"/>
+  <circle cx="1100" cy="200" r="2" fill="rgba(62,106,225,0.5)"/>
+  <circle cx="1050" cy="450" r="4" fill="rgba(62,106,225,0.3)"/>
+  <circle cx="870" cy="460" r="2" fill="rgba(200,169,110,0.3)"/>
+
+  <!-- Top-right corner accent -->
+  <path d="M1200 0 L1200 120 L1080 0 Z" fill="rgba(62,106,225,0.08)"/>
+</svg>

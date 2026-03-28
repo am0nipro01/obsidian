@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
+  <url>
+    <loc>https://obsidian-rental.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://obsidian-rental.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obsidian-rental.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://obsidian-rental.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Our Story — FR -->
+  <url>
+    <loc>https://obsidian-rental.com/notre-histoire</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://obsidian-rental.com/notre-histoire"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obsidian-rental.com/our-story"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://obsidian-rental.com/notre-histoire"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Our Story — EN -->
+  <url>
+    <loc>https://obsidian-rental.com/our-story</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://obsidian-rental.com/notre-histoire"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obsidian-rental.com/our-story"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://obsidian-rental.com/notre-histoire"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 import { getRoutes } from '../utils/routes'
+import SEO from '../components/SEO/SEO'
 import styles from './Login.module.css'
 
 export default function Login() {
@@ -45,8 +46,15 @@ export default function Login() {
     setLoading(false)
   }
 
+  const isFr = i18n.language.startsWith('fr')
+
   return (
     <div className={styles.page}>
+      <SEO
+        lang={isFr ? 'fr' : 'en'}
+        title={isFr ? 'Connexion' : 'Login'}
+        noindex={true}
+      />
       <div className={styles.card}>
         <a href="/" className={styles.logo}>OBSIDIAN</a>
         <div className={styles.goldLine} />

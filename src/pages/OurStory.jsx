@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { useEffect, useRef, useState } from 'react'
 import { getRoutes } from '../utils/routes'
 import Footer from '../components/Footer/Footer'
+import SEO from '../components/SEO/SEO'
 import styles from './OurStory.module.css'
 
 /* ─── Pillar icons ─────────────────────────────────────────────────────────── */
@@ -196,6 +197,24 @@ export default function OurStory() {
 
   return (
     <div className={styles.page}>
+      <SEO
+        lang={isFr ? 'fr' : 'en'}
+        title={isFr ? 'Notre Histoire' : 'Our Story'}
+        description={isFr
+          ? 'Découvrez l\'histoire d\'OBSIDIAN — une vision fondée sur la précision, l\'élégance et un service conciergerie d\'exception pour la location de véhicules premium.'
+          : 'Discover the story of OBSIDIAN — a vision built on precision, elegance and exceptional concierge service for premium vehicle rental.'}
+        canonical={isFr ? '/notre-histoire' : '/our-story'}
+        altLang={{ fr: '/notre-histoire', en: '/our-story' }}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: isFr ? 'Notre Histoire | OBSIDIAN' : 'Our Story | OBSIDIAN',
+          url: `https://obsidian-rental.com${isFr ? '/notre-histoire' : '/our-story'}`,
+          description: isFr
+            ? 'L\'histoire et les valeurs de OBSIDIAN, location de véhicules premium.'
+            : 'The story and values of OBSIDIAN, premium vehicle rental.',
+        }}
+      />
 
       {/* ── Hero ── */}
       <section className={styles.hero}>

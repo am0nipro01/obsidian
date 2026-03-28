@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Allow: /our-story
+Allow: /notre-histoire
+
+# Block all authenticated/private routes
+Disallow: /admin
+Disallow: /login
+Disallow: /connexion
+Disallow: /my-space
+Disallow: /mon-espace
+Disallow: /my-profile
+Disallow: /mon-profil
+Disallow: /booking
+Disallow: /reservation
+Disallow: /booking-confirmed
+Disallow: /reservation-confirmee
+Disallow: /payment-cancelled
+Disallow: /paiement-annule
+Disallow: /reservation-legacy
+
+# Block Netlify functions
+Disallow: /.netlify/
+
+Sitemap: https://obsidian-rental.com/sitemap.xml

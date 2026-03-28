@@ -1,4 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { getRoutes } from '../utils/routes'
@@ -18,5 +19,12 @@ export default function ProtectedRoute({ children, adminOnly = false }) {
   if (!user) return <Navigate to={routes.login} state={{ from: location.pathname + location.search }} replace />
   if (adminOnly && profile?.role !== 'admin') return <Navigate to="/" replace />
 
-  return children
+  return (
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+      {children}
+    </>
+  )
 }
