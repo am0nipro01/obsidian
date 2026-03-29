@@ -126,9 +126,9 @@ export default function BookingConfirmed() {
 
       {/* ── Actions ── */}
       <div className={styles.actions}>
-        <Link to={routes.dashboard} className={styles.btnPrimary}>
+        <a href={routes.dashboard} className={styles.btnPrimary}>
           {isFr ? 'Voir mes réservations' : 'View My Reservations'}
-        </Link>
+        </a>
         <Link to="/#fleet" className={styles.btnGhost}>
           {isFr ? 'Retour à la flotte' : 'Back to Fleet'}
         </Link>
