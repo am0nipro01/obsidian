@@ -23,7 +23,6 @@
 .solid {
   background-color: rgba(249, 249, 255, 0.75);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 rgba(195, 198, 214, 0.4);
 }
 .solid .logo { color: var(--on-surface); }
