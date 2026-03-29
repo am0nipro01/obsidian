@@ -9,6 +9,7 @@ import Testimonials from '../components/Testimonials/Testimonials'
 import Newsletter from '../components/Newsletter/Newsletter'
 import Footer from '../components/Footer/Footer'
 import SEO from '../components/SEO/SEO'
+import WelcomeModal from '../components/WelcomeModal/WelcomeModal'
 
 const SCHEMA_FR = [
   {
@@ -102,6 +103,7 @@ export default function Home() {
 
   return (
     <main>
+      <WelcomeModal />
       <SEO
         lang={isFr ? 'fr' : 'en'}
 
