@@ -1,5 +1,7 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-const { createClient } = require('@supabase/supabase-js')
+import Stripe from 'stripe'
+import { createClient } from '@supabase/supabase-js'
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -138,7 +140,7 @@ async function sendConfirmationEmail({ toEmail, toName, vehicleName, pickupDate,
   })
 }
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const sig = event.headers['stripe-signature']
   let stripeEvent
 

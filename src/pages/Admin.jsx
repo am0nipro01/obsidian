@@ -254,6 +254,15 @@ export default function Admin() {
         {/* Chart */}
         <AdminChart isFr={isFr} />
 
+        {/* Mobile-only add button */}
+        {tab === 'vehicles' && (
+          <div className={styles.addBtnMobile}>
+            <button className={styles.addBtn} onClick={showForm ? cancelForm : openAdd}>
+              {showForm ? (isFr ? 'Annuler' : 'Cancel') : `+ ${t('admin.vehicles.add')}`}
+            </button>
+          </div>
+        )}
+
         {/* Tab content */}
         <div className={styles.contentCard}>
 
@@ -271,7 +280,7 @@ export default function Admin() {
               ))}
             </div>
             {tab === 'vehicles' && (
-              <button className={styles.addBtn} onClick={showForm ? cancelForm : openAdd}>
+              <button className={`${styles.addBtn} ${styles.addBtnDesktop}`} onClick={showForm ? cancelForm : openAdd}>
                 {showForm ? (isFr ? 'Annuler' : 'Cancel') : `+ ${t('admin.vehicles.add')}`}
               </button>
             )}

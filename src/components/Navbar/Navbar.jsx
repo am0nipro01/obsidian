@@ -28,6 +28,9 @@ function IconSignOut() {
 function IconX() {
   return <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
 }
+function IconUser() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+}
 function IconChevron() {
   return <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><polyline points="6 9 12 15 18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
 }
@@ -40,7 +43,13 @@ export default function Navbar() {
   const avatarSrc = profile?.avatar_url || DEFAULT_AVATAR
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [menuClosing, setMenuClosing] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+
+  const closeMenu = () => {
+    setMenuClosing(true)
+    setTimeout(() => { setMenuOpen(false); setMenuClosing(false) }, 280)
+  }
   const location = useLocation()
   const navigate = useNavigate()
   const dropdownRef = useRef(null)
@@ -181,21 +190,14 @@ export default function Navbar() {
 
       {/* ── Full-screen mobile overlay ── */}
       {menuOpen && (
-        <div className={styles.mobileOverlay}>
+        <div className={`${styles.mobileOverlay} ${menuClosing ? styles.mobileOverlayClosing : ''}`}>
           {/* Header */}
           <div className={styles.mobileOverlayHeader}>
-            <Link to="/" className={styles.mobileLogo} onClick={() => setMenuOpen(false)}>OBSIDIAN</Link>
-            <button className={styles.mobileClose} onClick={() => setMenuOpen(false)} aria-label="Close menu">
+            <Link to="/" className={styles.mobileLogo} onClick={closeMenu}>OBSIDIAN</Link>
+            <button className={styles.mobileClose} onClick={closeMenu} aria-label="Close menu">
               <IconX />
             </button>
           </div>
-
-          {/* User card image area (shown when logged in) */}
-          {user && (
-            <div className={styles.mobileUserCard}>
-              <img src={avatarSrc} alt={profile?.full_name || 'User'} className={styles.mobileUserCardImg} />
-            </div>
-          )}
 
           {/* Nav items */}
           <nav className={styles.mobileNav}>
@@ -203,7 +205,7 @@ export default function Navbar() {
               <span className={`${styles.mobileNavIcon} ${location.pathname === '/' ? styles.mobileNavIconActive : ''}`}><IconCar /></span>
               <span className={`${styles.mobileNavLabel} ${location.pathname === '/' ? styles.mobileNavLabelActive : ''}`}>{t('nav.fleet')}</span>
             </a>
-            <a href={routes.booking} className={styles.mobileNavItem} onClick={() => setMenuOpen(false)}>
+            <a href={routes.booking} className={styles.mobileNavItem} onClick={closeMenu}>
               <span className={styles.mobileNavIcon}><IconCalendar /></span>
               <span className={styles.mobileNavLabel}>{isFr ? 'Réservation' : 'Reservations'}</span>
             </a>
@@ -219,10 +221,22 @@ export default function Navbar() {
               <span className={styles.mobileNavIcon}><IconMail /></span>
               <span className={styles.mobileNavLabel}>{t('nav.newsletter')}</span>
             </a>
-            <Link to={routes.ourStory} className={styles.mobileNavItem} onClick={() => setMenuOpen(false)}>
+            <Link to={routes.ourStory} className={styles.mobileNavItem} onClick={closeMenu}>
               <span className={styles.mobileNavIcon}><IconBook /></span>
               <span className={styles.mobileNavLabel}>{t('nav.ourStory')}</span>
             </Link>
+            {user && profile?.role !== 'admin' && (
+              <Link to={routes.dashboard} className={styles.mobileNavItem} onClick={closeMenu}>
+                <span className={styles.mobileNavIcon}><IconUser /></span>
+                <span className={styles.mobileNavLabel}>{isFr ? 'Mon espace' : 'My Space'}</span>
+              </Link>
+            )}
+            {user && profile?.role === 'admin' && (
+              <Link to={routes.admin} className={styles.mobileNavItem} onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'instant' }) }}>
+                <span className={`${styles.mobileNavIcon} ${styles.mobileNavIconAdmin}`}><IconUser /></span>
+                <span className={`${styles.mobileNavLabel} ${styles.mobileNavLabelAdmin}`}>Admin</span>
+              </Link>
+            )}
           </nav>
 
           {/* Bottom: user info + sign out */}
@@ -242,16 +256,16 @@ export default function Navbar() {
               </div>
               <button
                 className={styles.mobileBottomSignOut}
-                onClick={() => { signOut(); setMenuOpen(false) }}
+                onClick={() => { signOut(); closeMenu() }}
               >
                 <IconSignOut />
-                <span>{isFr ? 'Se Déconnecter' : 'Sign Out'}</span>
+                <span>{isFr ? 'Déconnexion' : 'Sign Out'}</span>
               </button>
             </div>
           )}
           {!user && (
             <div className={styles.mobileBottom}>
-              <Link to={routes.login} className={styles.mobileLoginBtn} onClick={() => setMenuOpen(false)}>
+              <Link to={routes.login} className={styles.mobileLoginBtn} onClick={closeMenu}>
                 {t('nav.login')}
               </Link>
             </div>

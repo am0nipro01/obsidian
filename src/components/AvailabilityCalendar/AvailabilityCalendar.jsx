@@ -183,6 +183,13 @@ export default function AvailabilityCalendar({ vehicleId, pickupDate, returnDate
         {renderMonth(viewYear, viewMonth, grid1)}
         {renderMonth(m2Year, m2Month, grid2)}
       </div>
+      <div className={`${styles.stepHint} ${selecting ? styles.stepHintReturn : ''}`}>
+        {selecting
+          ? (isFr ? '📅 Sélectionnez maintenant votre date de retour' : '📅 Now select your return date')
+          : (isFr ? '📅 Sélectionnez votre date de départ' : '📅 Select your departure date')
+        }
+      </div>
+
       <div className={styles.legend}>
         <span className={styles.legendItem}><span className={`${styles.legendDot} ${styles.legendAvailable}`} />{isFr ? 'Disponible' : 'Available'}</span>
         <span className={styles.legendItem}><span className={`${styles.legendDot} ${styles.legendBooked}`} />{isFr ? 'Indisponible' : 'Unavailable'}</span>

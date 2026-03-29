@@ -148,6 +148,23 @@
 }
 
 /* ── Legend ── */
+.stepHint {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #f0f4ff;
+  color: #2563eb;
+  text-align: center;
+  transition: background 0.25s, color 0.25s;
+}
+
+.stepHintReturn {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
 .legend {
   display: flex;
   gap: 16px;

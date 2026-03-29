@@ -270,7 +270,7 @@ function Stepper({ currentStep, isFr }) {
 
 // ─── Car Summary Card (Right Panel — steps 1–3) ─────────────────────────────────
 
-function CarSummaryCard({ vehicle, days, baseRate, deliveryFee, protectionFee, tax, total, isFr }) {
+function CarSummaryCard({ vehicle, days, baseRate, deliveryFee, protectionFee, tax, total, isFr, step, pickupLocation }) {
   const fmt = (n) => `${n.toFixed(2)}€`
 
   return (
@@ -318,7 +318,20 @@ function CarSummaryCard({ vehicle, days, baseRate, deliveryFee, protectionFee, t
               <p className={styles.refundNote}>{isFr ? "Remboursable jusqu'à 24h avant la prise en charge." : 'Fully refundable until 24 hours before pickup.'}</p>
             )}
             <div className={styles.previewRoute}>
-              <div className={styles.previewMap} />
+              {step >= 3 && pickupLocation ? (
+                <iframe
+                  title="pickup-map"
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(pickupLocation)}&output=embed&z=13`}
+                  width="100%"
+                  height="120"
+                  style={{ border: 0, borderRadius: 8, display: 'block', marginBottom: 10 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              ) : (
+                <div className={styles.previewMap} />
+              )}
               <button className={styles.previewBtn}>{isFr ? "Aperçu de l'itinéraire" : 'Preview Route'}</button>
             </div>
             <div className={styles.assistance}>
@@ -568,7 +581,7 @@ function StepVehicle({ vehicles, bookingData, setBookingData, onNext, isFr }) {
         })}
       </div>
 
-      <button className={styles.nextBtn} onClick={onNext} disabled={!canContinue}>
+      <button className={`${styles.nextBtn} ${styles.nextBtnDesktop}`} onClick={onNext} disabled={!canContinue}>
         {isFr ? 'CONTINUER VERS LE PLANNING →' : 'CONTINUE TO SCHEDULE →'}
       </button>
     </div>
@@ -579,8 +592,19 @@ function StepVehicle({ vehicles, bookingData, setBookingData, onNext, isFr }) {
 
 function StepSchedule({ bookingData, setBookingData, onNext, onBack, isFr }) {
   const today = new Date().toISOString().split('T')[0]
+  const [calendarOpen, setCalendarOpen] = useState(false)
+  const [calendarClosing, setCalendarClosing] = useState(false)
   const upd = (key, val) => setBookingData((prev) => ({ ...prev, [key]: val }))
-  const handleDateChange = (pickup, returnD) => setBookingData((prev) => ({ ...prev, pickupDate: pickup, returnDate: returnD }))
+
+  const openCalendar = () => { if (!calendarOpen) setCalendarOpen(true) }
+  const closeCalendar = () => {
+    setCalendarClosing(true)
+    setTimeout(() => { setCalendarOpen(false); setCalendarClosing(false) }, 250)
+  }
+  const handleDateChange = (pickup, returnD) => {
+    setBookingData((prev) => ({ ...prev, pickupDate: pickup, returnDate: returnD }))
+    if (pickup && returnD) closeCalendar()
+  }
   const canContinue =
     bookingData.pickupLocation.trim() &&
     bookingData.pickupDate &&
@@ -627,8 +651,9 @@ function StepSchedule({ bookingData, setBookingData, onNext, onBack, isFr }) {
               value={bookingData.pickupDate
                 ? new Date(bookingData.pickupDate + 'T00:00:00').toLocaleDateString(isFr ? 'fr-FR' : 'en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
                 : ''}
-              placeholder={isFr ? 'Sélectionnez ci-dessous' : 'Select below'}
+              placeholder={isFr ? 'Cliquez pour sélectionner' : 'Click to select'}
               className={styles.dateInput}
+              onClick={openCalendar}
             />
           </div>
           <div className={styles.formField}>
@@ -639,18 +664,23 @@ function StepSchedule({ bookingData, setBookingData, onNext, onBack, isFr }) {
               value={bookingData.returnDate
                 ? new Date(bookingData.returnDate + 'T00:00:00').toLocaleDateString(isFr ? 'fr-FR' : 'en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
                 : ''}
-              placeholder={isFr ? 'Sélectionnez ci-dessous' : 'Select below'}
+              placeholder={isFr ? 'Cliquez pour sélectionner' : 'Click to select'}
               className={styles.dateInput}
+              onClick={openCalendar}
             />
           </div>
         </div>
-        <AvailabilityCalendar
-          vehicleId={bookingData.vehicle_id}
-          pickupDate={bookingData.pickupDate}
-          returnDate={bookingData.returnDate}
-          onChange={handleDateChange}
-          isFr={isFr}
-        />
+        {calendarOpen && (
+          <div className={calendarClosing ? styles.calendarWrapperClosing : styles.calendarWrapper}>
+            <AvailabilityCalendar
+              vehicleId={bookingData.vehicle_id}
+              pickupDate={bookingData.pickupDate}
+              returnDate={bookingData.returnDate}
+              onChange={handleDateChange}
+              isFr={isFr}
+            />
+          </div>
+        )}
       </div>
 
       <div className={styles.deliverySection}>
@@ -819,6 +849,12 @@ export default function Booking() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
+  useEffect(() => {
+    if (window.innerWidth <= 900) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [step])
+
   const [bookingData, setBookingData] = useState({
     vehicle_id: '',
     pickupLocation: '',
@@ -883,15 +919,31 @@ export default function Booking() {
 
     if (resError) { setError(resError.message); setLoading(false); return }
 
-    const response = await fetch('/.netlify/functions/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ reservationId: reservation.id, vehicleName: selectedVehicle.name, totalPrice: total, lang: i18n.language }),
-    })
+    try {
+      const response = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reservationId: reservation.id, vehicleName: selectedVehicle.name, totalPrice: total, lang: i18n.language }),
+      })
 
-    const { url, error: stripeError } = await response.json()
-    if (stripeError) { setError(stripeError); setLoading(false); return }
-    window.location.href = url
+      if (!response.ok) {
+        setError(isFr ? 'Erreur serveur. Veuillez réessayer.' : 'Server error. Please try again.')
+        setLoading(false)
+        return
+      }
+
+      const data = await response.json()
+      if (data.error) { setError(data.error); setLoading(false); return }
+      if (!data.url) {
+        setError(isFr ? 'Impossible de créer la session de paiement.' : 'Could not create payment session.')
+        setLoading(false)
+        return
+      }
+      window.location.href = data.url
+    } catch {
+      setError(isFr ? 'Erreur réseau. Vérifiez votre connexion.' : 'Network error. Check your connection.')
+      setLoading(false)
+    }
   }
 
   const pricing = { days, baseRate, deliveryFee, protectionFee, tax, total }
@@ -930,10 +982,42 @@ export default function Booking() {
                 tax={tax}
                 total={total}
                 isFr={isFr}
+                step={step}
+                pickupLocation={bookingData.pickupLocation}
               />
             )}
           </div>
         </div>
+
+        {step < 4 && (
+          <div className={styles.mobileStepAction}>
+            {step === 1 && (
+              <button className={styles.nextBtn} onClick={() => setStep(2)} disabled={!bookingData.vehicle_id}>
+                {isFr ? 'CONTINUER VERS LE PLANNING →' : 'CONTINUE TO SCHEDULE →'}
+              </button>
+            )}
+            {step === 2 && (
+              <>
+                <button
+                  className={styles.nextBtn}
+                  onClick={() => setStep(3)}
+                  disabled={!(bookingData.pickupLocation.trim() && bookingData.pickupDate && bookingData.returnDate && bookingData.returnDate >= bookingData.pickupDate)}
+                >
+                  {isFr ? 'CONTINUER VERS LA PROTECTION →' : 'CONTINUE TO PROTECTION →'}
+                </button>
+                <button className={styles.backBtn} onClick={() => setStep(1)}>← {isFr ? 'Retour' : 'Back'}</button>
+              </>
+            )}
+            {step === 3 && (
+              <>
+                <button className={styles.nextBtn} onClick={() => setStep(4)}>
+                  {isFr ? 'CONTINUER VERS LA RÉVISION →' : 'CONTINUE TO REVIEW →'}
+                </button>
+                <button className={styles.backBtn} onClick={() => setStep(2)}>← {isFr ? 'Retour' : 'Back'}</button>
+              </>
+            )}
+          </div>
+        )}
       </div>
       <Footer />
     </>
