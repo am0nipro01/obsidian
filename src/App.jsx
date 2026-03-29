@@ -60,10 +60,10 @@ function App() {
 
         {/* Dashboard — EN: /my-space  FR: /mon-espace */}
         <Route path={R.en.dashboard} element={
-          <ProtectedRoute><Dashboard /></ProtectedRoute>
+          <ProtectedRoute noAdmin><Dashboard /></ProtectedRoute>
         } />
         <Route path={R.fr.dashboard} element={
-          <ProtectedRoute><Dashboard /></ProtectedRoute>
+          <ProtectedRoute noAdmin><Dashboard /></ProtectedRoute>
         } />
 
         {/* Admin — same in all languages */}

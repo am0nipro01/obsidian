@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import { getRoutes } from '../utils/routes'
 
-export default function ProtectedRoute({ children, adminOnly = false }) {
+export default function ProtectedRoute({ children, adminOnly = false, noAdmin = false }) {
   const { user, profile, loading } = useAuth()
   const location = useLocation()
   const { i18n } = useTranslation()
@@ -18,6 +18,7 @@ export default function ProtectedRoute({ children, adminOnly = false }) {
 
   if (!user) return <Navigate to={routes.login} state={{ from: location.pathname + location.search }} replace />
   if (adminOnly && profile?.role !== 'admin') return <Navigate to="/" replace />
+  if (noAdmin && profile?.role === 'admin') return <Navigate to={routes.admin} replace />
 
   return (
     <>
