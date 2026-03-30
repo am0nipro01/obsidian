@@ -28,8 +28,7 @@
 
 .imageWrapper {
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
+  clip-path: inset(0 round 20px);
   aspect-ratio: 3 / 4;
 }
 
