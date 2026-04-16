@@ -28,7 +28,6 @@
 
 .imageWrapper {
   position: relative;
-  clip-path: inset(0 round 20px);
   aspect-ratio: 3 / 4;
 }
 
@@ -37,6 +36,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 20px;
 }
 
 /* Floating card — overflows bottom-right of imageWrapper */
