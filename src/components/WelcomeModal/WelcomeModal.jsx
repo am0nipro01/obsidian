@@ -11,6 +11,8 @@ const CONTENT = {
     password: 'Mot de passe',
     cta: 'Accéder au site →',
     skip: 'Fermer',
+    stripeLabel: 'Carte de test Stripe',
+    stripeHint: 'Date & CVC : au choix',
   },
   en: {
     title: 'Welcome to',
@@ -20,6 +22,8 @@ const CONTENT = {
     password: 'Password',
     cta: 'Enter the site →',
     skip: 'Close',
+    stripeLabel: 'Stripe test card',
+    stripeHint: 'Date & CVC: any value',
   },
 }
 
@@ -89,6 +93,12 @@ export default function WelcomeModal() {
               <span className={styles.credLine}><b>Email :</b> test@test.com</span>
               <span className={styles.credLine}><b>{t.password} :</b> Test75Test</span>
             </div>
+          </div>
+
+          <div className={styles.stripeCard}>
+            <span className={styles.stripeLabel}>{t.stripeLabel}</span>
+            <span className={styles.stripeNumber}>4242 4242 4242 4242</span>
+            <span className={styles.stripeHint}>{t.stripeHint}</span>
           </div>
 
           <button className={styles.ctaBtn} onClick={() => setVisible(false)}>

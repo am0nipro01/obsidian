@@ -60,8 +60,10 @@ export default function Home() {
   const isFr = i18n.language.startsWith('fr')
   const location = useLocation()
 
-  // Always start at the top on fresh load / refresh
-  useEffect(() => { window.scrollTo(0, 0) }, [])
+  // Start at top only if not scrolling to a specific section
+  useEffect(() => {
+    if (!location.state?.scrollTo) window.scrollTo(0, 0)
+  }, [])
 
   // Scroll to section when arriving from another page with state
   useEffect(() => {
