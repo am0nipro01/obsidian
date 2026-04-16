@@ -46,7 +46,6 @@
   right: -28px;
   background: rgba(240, 241, 246, 0.70);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
   padding: 2rem 1.5rem;
   max-width: 300px;
