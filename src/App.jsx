@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
 import Navbar from './components/Navbar/Navbar'
+import ScrollToTop from './components/ScrollToTop'
 import ScrollToTopBtn from './components/ScrollToTopBtn/ScrollToTopBtn'
 import Home from './pages/Home'
 import Reservation from './pages/Reservation'
@@ -20,6 +21,7 @@ const R = ROUTES
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <ScrollToTopBtn />
       <Routes>
